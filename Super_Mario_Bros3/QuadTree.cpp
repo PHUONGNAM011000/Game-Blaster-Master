@@ -1,17 +1,22 @@
 #include "PlayScene.h"
 #define OBJECT_TYPE_BRICK	1
-#define OBJECT_TYPE_EYELET	2
-#define OBJECT_TYPE_STUKA	3
-#define OBJECT_TYPE_BALLCARRY 4	
-#define OBJECT_TYPE_BALLBOT 5
-#define OBJECT_TYPE_GX680	6
-#define OBJECT_TYPE_GX680S	7
-#define OBJECT_TYPE_DRAP	8
-#define OBJECT_TYPE_LASERGUARD	9
+#define OBJECT_TYPE_GOOMBA	2
+#define OBJECT_TYPE_LASERGUARD	3
+#define OBJECT_TYPE_BALLCARRY	4
+#define OBJECT_TYPE_BALLBOT	5
+#define OBJECT_TYPE_DRAP	6
+#define OBJECT_TYPE_CGX680	7
+#define OBJECT_TYPE_CGX680S	8
+#define OBJECT_TYPE_CSTUKA	9
+#define OBJECT_TYPE_EYELET	10
+#define OBJECT_TYPE_CINTERCRUPT	11
+
 
 #define OBJECT_TYPE_PORTAL	50
 
 #define MAX_SCENE_LINE 1024
+
+#define SCENE_SECTION_MapObj	7
 
 CQuadTree::CQuadTree(LPCWSTR filePath)
 {
@@ -105,20 +110,23 @@ void CQuadTree::_ParseSection_OBJECTS(string line)
 
 	switch (object_type)
 	{
-	case OBJECT_TYPE_EYELET: obj = new CGoomba(); break;
+	case OBJECT_TYPE_GOOMBA: obj = new CGoomba(); break;
 	case OBJECT_TYPE_BRICK: obj = new CBrick(); break;
-	case OBJECT_TYPE_STUKA: obj = new CStuka(); break;
-	case OBJECT_TYPE_BALLCARRY: obj = new CBall_Carry(); break;
-	case OBJECT_TYPE_BALLBOT: obj = new CBallbot(); break;
-	case OBJECT_TYPE_GX680: obj = new CGX_680(); break;
-	case OBJECT_TYPE_GX680S: obj = new CGX_680S(); break;
-	case OBJECT_TYPE_DRAP: obj = new CDrap(); break;
 	case OBJECT_TYPE_LASERGUARD: obj = new CLaserGuard(); break;
+	case OBJECT_TYPE_BALLCARRY: obj = new CBallCarry(); break;
+	case OBJECT_TYPE_BALLBOT: obj = new CBallBot(); break;
+	case OBJECT_TYPE_DRAP: obj = new CDrap(); break;
+	case OBJECT_TYPE_CGX680: obj = new CGX680(); break;
+	case OBJECT_TYPE_CGX680S: obj = new CGX680S(); break;
+	case OBJECT_TYPE_CSTUKA: obj = new CSTUKA(); break;
+	case OBJECT_TYPE_EYELET: obj = new CEYELET(); break;
+	case OBJECT_TYPE_CINTERCRUPT: obj = new CINTERRUPT(); break;
+		
+		
 	default:
 		DebugOut(L"[ERR] Invalid object type: %d\n", object_type);
 		return;
 	}
-
 	// General object setup
 	LPANIMATION_SET ani_set = animation_sets->Get(ani_set_id);
 	if (obj != NULL)
@@ -130,7 +138,6 @@ void CQuadTree::_ParseSection_OBJECTS(string line)
 		/*obj->SetrenderLayer(renderLayer);*/
 		Add(obj);
 	}
-
 }
 
 void CQuadTree::Load(LPCWSTR filePath)
@@ -143,32 +150,50 @@ void CQuadTree::Load(LPCWSTR filePath)
 	// current resource section flag
 	int section = 0;
 
-	char str[MAX_GRID_LINE];
-	while (f.getline(str, MAX_GRID_LINE))
+	char str[MAX_QUADTREE_LINE];
+	while (f.getline(str, MAX_QUADTREE_LINE))
 	{
 		string line(str);
 
 		if (line[0] == '#') continue;	// skip comment lines	
 
+		if (line == "[MapObj]") { section = SCENE_SECTION_MapObj; continue; }
+
 		if (line == "[SETTINGS]") {
-			section = GRID_SECTION_SETTINGS; continue;
+			section = QUADTREE_SECTION_SETTINGS; continue;
 		}
 		if (line == "[OBJECTS]") {
-			section = GRID_SECTION_OBJECTS; continue;
+			section = QUADTREE_SECTION_OBJECTS; continue;
 		}
 		//
 		// data section
 		//
 		switch (section)
 		{
-		case GRID_SECTION_SETTINGS: _ParseSection_SETTINGS(line); break;
-		case GRID_SECTION_OBJECTS: _ParseSection_OBJECTS(line); break;
+		case SCENE_SECTION_MapObj: _ParseSection_MapObj(line); break;
+		case QUADTREE_SECTION_SETTINGS: _ParseSection_SETTINGS(line); break;
+		case QUADTREE_SECTION_OBJECTS: _ParseSection_OBJECTS(line); break;
 		}
 	}
 
 	f.close();
 	Plit();
 	DebugOut(L"[INFO] Done loading scene resources %s\n", filePath);
+}
+
+void CQuadTree::_ParseSection_MapObj(string line)
+{
+	vector<string> tokens = split(line);
+
+	if (tokens.size() < 3) return; // skip invalid lines
+
+	int totalRowsMap = atoi(tokens[0].c_str());
+	int totalColumnsMap = atoi(tokens[1].c_str());
+	wstring file_path = ToWSTR(tokens[2]);
+
+	obj = new MapObj(totalRowsMap, totalColumnsMap);
+	obj->LoadMapObj(file_path.c_str());
+	obj->Render(listObjects);
 }
 
 void CQuadTree::Render()
@@ -216,15 +241,15 @@ void CQuadTree::Pop(vector<LPGAMEOBJECT>& listObject, int CamX, int CamY)
 		for (int i = 0; i < listObjects.size(); i++)
 		{
 			if (inRange(x + cellWidth, y + cellHeight, CamX, CamY, CGame::GetInstance()->GetScreenWidth(), CGame::GetInstance()->GetScreenHeight()))
-				if (!listObjects[i]->GetActive())
-				{
-					float Ox, Oy;
-					listObjects[i]->GetOriginLocation(Ox, Oy);
-					if (!inRange(Ox, Oy, CamX, CamY, CGame::GetInstance()->GetScreenWidth(), CGame::GetInstance()->GetScreenHeight()))
-						listObjects[i]->reset();
-					listObject.push_back(listObjects[i]);
-					listObjects[i]->SetActive(true);
-				}
+			if (!listObjects[i]->GetActive())
+			{
+				float Ox, Oy;
+				listObjects[i]->GetOriginLocation(Ox, Oy);
+				if (!inRange(Ox, Oy, CamX, CamY, CGame::GetInstance()->GetScreenWidth(), CGame::GetInstance()->GetScreenHeight()))
+					listObjects[i]->reset();
+				listObject.push_back(listObjects[i]);
+				listObjects[i]->SetActive(true);
+			}
 		}
 		return;
 	}
@@ -233,7 +258,7 @@ void CQuadTree::Pop(vector<LPGAMEOBJECT>& listObject, int CamX, int CamY)
 	BrachTR->Pop(listObject, CamX, CamY);
 	BrachBL->Pop(listObject, CamX, CamY);
 	BrachBR->Pop(listObject, CamX, CamY);
-
+		
 }
 
 void CQuadTree::Unload()

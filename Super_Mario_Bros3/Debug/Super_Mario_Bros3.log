@@ -1,79 +1,95 @@
-﻿  Ballbot.cpp
-  Ball_Carry.cpp
-  Brick.cpp
-  Drap.cpp
-  Eyelet.cpp
-  GX_680.cpp
-  GX_680S.cpp
-  LaserGuard.cpp
-  Stuka.cpp
-  Map.cpp
-  PlayScene.cpp
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Game.h(91,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Game.h(95,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Ballbot.h(18,1): warning C4005: 'BALLCARRY_ANI_DIE': macro redefinition
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Ball_Carry.h(20): message : see previous definition of 'BALLCARRY_ANI_DIE'
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\PlayScene.cpp(166,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\PlayScene.cpp(188,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\PlayScene.cpp(211,10): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\PlayScene.cpp(212,10): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\PlayScene.cpp(244,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\PlayScene.cpp(245,18): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\PlayScene.cpp(250,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\PlayScene.cpp(251,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\PlayScene.cpp(369,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\PlayScene.cpp(378,20): warning C4018: '<': signed/unsigned mismatch
-  Portal.cpp
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Portal.cpp(9,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Portal.cpp(10,17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  QuadTree.cpp
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Game.h(91,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Game.h(95,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Ballbot.h(18,1): warning C4005: 'BALLCARRY_ANI_DIE': macro redefinition
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Ball_Carry.h(20): message : see previous definition of 'BALLCARRY_ANI_DIE'
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\QuadTree.cpp(79,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\QuadTree.cpp(80,19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\QuadTree.cpp(176,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\QuadTree.cpp(216,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\QuadTree.cpp(218,136): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\QuadTree.cpp(218,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\QuadTree.cpp(218,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\QuadTree.cpp(218,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\QuadTree.cpp(223,116): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\QuadTree.cpp(223,75): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\QuadTree.cpp(223,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\QuadTree.cpp(223,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Scene.cpp
-  Tank.cpp
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Game.h(91,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Game.h(95,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Ballbot.h(18,1): warning C4005: 'BALLCARRY_ANI_DIE': macro redefinition
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Ball_Carry.h(20): message : see previous definition of 'BALLCARRY_ANI_DIE'
-  Utils.cpp
+﻿  CTANKBULLET.cpp
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Camera.h(13,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Camera.h(17,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Game.h(96,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Game.h(100,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Eye.h(19,1): warning C4005: 'EYE_STATE_WALKING_UP': macro redefinition
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Eye.h(15): message : see previous definition of 'EYE_STATE_WALKING_UP'
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\CTANKBULLET.cpp(56,28): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Game.cpp
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Game.h(91,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Game.h(95,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Ballbot.h(18,1): warning C4005: 'BALLCARRY_ANI_DIE': macro redefinition
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Ball_Carry.h(20): message : see previous definition of 'BALLCARRY_ANI_DIE'
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Camera.h(13,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Camera.h(17,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Eye.h(19,1): warning C4005: 'EYE_STATE_WALKING_UP': macro redefinition
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Eye.h(15): message : see previous definition of 'EYE_STATE_WALKING_UP'
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Game.h(96,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Game.h(100,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
   GameObject.cpp
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Game.h(91,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Game.h(95,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-  main.cpp
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Game.h(91,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Game.h(95,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Ballbot.h(18,1): warning C4005: 'BALLCARRY_ANI_DIE': macro redefinition
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Ball_Carry.h(20): message : see previous definition of 'BALLCARRY_ANI_DIE'
-  Tank_Body.cpp
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Game.h(91,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Game.h(95,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-  Generating Code...
-  Compiling...
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Camera.h(13,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Camera.h(17,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Eye.h(19,1): warning C4005: 'EYE_STATE_WALKING_UP': macro redefinition
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Eye.h(15): message : see previous definition of 'EYE_STATE_WALKING_UP'
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Game.h(96,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Game.h(100,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  PlayScene.cpp
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Camera.h(13,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Camera.h(17,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Game.h(96,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Game.h(100,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Eye.h(19,1): warning C4005: 'EYE_STATE_WALKING_UP': macro redefinition
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Eye.h(15): message : see previous definition of 'EYE_STATE_WALKING_UP'
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\PlayScene.cpp(179,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\PlayScene.cpp(201,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\PlayScene.cpp(224,10): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\PlayScene.cpp(225,10): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\PlayScene.cpp(255,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\PlayScene.cpp(256,23): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\PlayScene.cpp(261,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\PlayScene.cpp(262,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\PlayScene.cpp(387,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\PlayScene.cpp(396,20): warning C4018: '<': signed/unsigned mismatch
+  QuadTree.cpp
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Camera.h(13,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Camera.h(17,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Game.h(96,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Game.h(100,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Eye.h(19,1): warning C4005: 'EYE_STATE_WALKING_UP': macro redefinition
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Eye.h(15): message : see previous definition of 'EYE_STATE_WALKING_UP'
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\QuadTree.cpp(84,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\QuadTree.cpp(85,19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\QuadTree.cpp(201,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\QuadTree.cpp(241,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\QuadTree.cpp(243,136): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\QuadTree.cpp(243,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\QuadTree.cpp(243,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\QuadTree.cpp(243,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\QuadTree.cpp(248,115): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\QuadTree.cpp(248,74): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\QuadTree.cpp(248,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\QuadTree.cpp(248,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Sprites.cpp
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Game.h(91,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Game.h(95,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-  Animations.cpp
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Camera.h(13,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Camera.h(17,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Eye.h(19,1): warning C4005: 'EYE_STATE_WALKING_UP': macro redefinition
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Eye.h(15): message : see previous definition of 'EYE_STATE_WALKING_UP'
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Game.h(96,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Game.h(100,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  TANK_BODY.cpp
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Camera.h(13,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Camera.h(17,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Eye.h(19,1): warning C4005: 'EYE_STATE_WALKING_UP': macro redefinition
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Eye.h(15): message : see previous definition of 'EYE_STATE_WALKING_UP'
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Game.h(96,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Game.h(100,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  TankParts.cpp
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Camera.h(13,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Camera.h(17,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Game.h(96,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Game.h(100,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Eye.h(19,1): warning C4005: 'EYE_STATE_WALKING_UP': macro redefinition
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Eye.h(15): message : see previous definition of 'EYE_STATE_WALKING_UP'
   Textures.cpp
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Game.h(91,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Super_Mario_Bros3\Game.h(95,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Camera.h(13,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Camera.h(17,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Eye.h(19,1): warning C4005: 'EYE_STATE_WALKING_UP': macro redefinition
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Eye.h(15): message : see previous definition of 'EYE_STATE_WALKING_UP'
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Game.h(96,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Game.h(100,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  main.cpp
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Camera.h(13,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Camera.h(17,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Eye.h(19,1): warning C4005: 'EYE_STATE_WALKING_UP': macro redefinition
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Eye.h(15): message : see previous definition of 'EYE_STATE_WALKING_UP'
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Game.h(96,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Super_Mario_Bros3\Game.h(100,10): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
   Generating Code...
-  Super_Mario_Bros3.vcxproj -> C:\Users\PC\Desktop\NAMGAME\Game-Blaster-Master\Debug\Super_Mario_Bros3.exe
+  Super_Mario_Bros3.vcxproj -> C:\Users\PC\Desktop\git-game\Blaster_Master_Game\Debug\Blaster Master.exe
