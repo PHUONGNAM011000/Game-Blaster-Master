@@ -1,7 +1,8 @@
 #include "Tank_Bullet.h"
 #include <algorithm>
 #include "PlayScene.h"
-#include "TANK_BODY.h"
+#include "SOPHIA.h"
+#include "Brick.h"
 
 CTank_Bullet::CTank_Bullet()
 {
@@ -45,17 +46,19 @@ void CTank_Bullet::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	}
 	if (isUsed == false)
 	{
-		CTank_Body* TANK_BODY = ((CPlayScene*)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
-		if (TANK_BODY->GetisFiring() == true)
+		CSoPhia* SOPHIA = ((CPlayScene*)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
+		if (SOPHIA->GetisFiring() == true)
 		{
-			if (TANK_BODY->GetisAlreadyFired() == false)
+			if (SOPHIA->GetisAlreadyFired() == false)
 			{
 				isUsed = true;
-				x = TANK_BODY->x;
-				y = TANK_BODY->y - 9;
-				SetSpeed(TANK_BODY->nx * 0.15);
-				TANK_BODY->SetisAlreadyFired(true);
+				x = SOPHIA->x;
+				y = SOPHIA->y;
+				SetSpeed(SOPHIA->nx * 0.15);
+				SOPHIA->SetisAlreadyFired(true);
+				SOPHIA->StartFiring();
 				StartReset();
+				DebugOut(L"FIRED \n");
 			}
 		}
 	}
@@ -77,15 +80,14 @@ void CTank_Bullet::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		for (UINT i = 0; i < coEventsResult.size(); i++)
 		{
 			LPCOLLISIONEVENT e = coEventsResult[i];
-			if (dynamic_cast<CEyelet*>(e->obj)) // if e->obj is Goomba
+			if (!dynamic_cast<CBrick*>(e->obj)) // if e->obj is Goomba
 			{
-
+				(e->obj)->SetState(STATE_DIE);
 			}
 			if (nx != 0)
 			{
 				SetState(CTANKBULLET_STATE_DIE);
 			}
-
 		}
 		// clean up collision events
 		for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
@@ -102,87 +104,9 @@ void CTank_Bullet::CalcPotentialCollisions(
 	for (UINT i = 0; i < coObjects->size(); i++)
 	{
 		LPCOLLISIONEVENT e = SweptAABBEx(coObjects->at(i));
-		if (dynamic_cast<CTank_Body*>(e->obj))
+		if (dynamic_cast<CSoPhia*>(e->obj))
 		{
 			continue;
-		}
-		if (dynamic_cast<CInterrupt*>(e->obj)) // if e->obj is Goomba 
-		{
-			CInterrupt* interrupt = dynamic_cast<CInterrupt*>(e->obj);
-
-			// jump on top >> kill Goomba and deflect a bit 
-			if (e->nx != 0)
-			{
-				if (interrupt->GetState() != INTERRUPT_STATE_DIE)
-				{
-					interrupt->SetState(INTERRUPT_STATE_DIE);
-					interrupt->x = 999999;
-					//vy = -MARIO_JUMP_DEFLECT_SPEED;
-				}
-				
-			}
-			
-		}
-		if (dynamic_cast<CBall_Carry*>(e->obj)) // if e->obj is Goomba 
-		{
-			CBall_Carry* ball_carry = dynamic_cast<CBall_Carry*>(e->obj);
-
-			// jump on top >> kill Goomba and deflect a bit 
-			if (e->nx != 0)
-			{
-				if (ball_carry->GetState() != BALLCARRY_STATE_DIE)
-				{
-					ball_carry->SetState(BALLCARRY_STATE_DIE);
-					//goomba->x = 999999;
-					//vy = -MARIO_JUMP_DEFLECT_SPEED;
-				}
-			}
-		}
-		if (dynamic_cast<CEyelet*>(e->obj)) // if e->obj is Goomba 
-		{
-			CEyelet* eyelet = dynamic_cast<CEyelet*>(e->obj);
-
-			// jump on top >> kill Goomba and deflect a bit 
-			if (e->nx != 0)
-			{
-				if (eyelet->GetState() != INTERRUPT_STATE_DIE)
-				{
-					eyelet->SetState(INTERRUPT_STATE_DIE);
-					eyelet->x = 999999;
-					//vy = -MARIO_JUMP_DEFLECT_SPEED;
-				}
-			}
-			
-		}
-		if (dynamic_cast<CBallbot*>(e->obj)) // if e->obj is Goomba 
-		{
-			CBallbot* ballbot = dynamic_cast<CBallbot*>(e->obj);
-
-			// jump on top >> kill Goomba and deflect a bit 
-			if (e->nx != 0)
-			{
-				if (ballbot->GetState() != BALLBOT_STATE_DIE)
-				{
-					ballbot->SetState(BALLBOT_STATE_DIE);
-					ballbot->x = 999999;
-					//vy = -MARIO_JUMP_DEFLECT_SPEED;
-				}
-			}
-		}
-		if (dynamic_cast<CStuka*>(e->obj)) // if e->obj is Goomba 
-		{
-			CStuka* stuka = dynamic_cast<CStuka*>(e->obj);
-
-			// jump on top >> kill Goomba and deflect a bit 
-			if (e->nx != 0)
-			{
-				if (stuka->GetState() != STUKA_STATE_DIE)
-				{
-					stuka->SetState(STUKA_STATE_DIE);
-					stuka->x = 999999;
-					//vy = -MARIO_JUMP_DEFLECT_SPEED;
-				}
-			}
 		}
 		if (e->t > 0 && e->t <= 1.0f)
 			coEvents.push_back(e);

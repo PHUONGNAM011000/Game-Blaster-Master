@@ -9,178 +9,214 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
+    <Filter Include="Enemy">
+      <UniqueIdentifier>{bce5dbdf-49a0-4b3f-817f-768fdd14efbc}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Enemy">
-      <UniqueIdentifier>{31dcfe15-dc6a-4fb0-b3be-bcad5ef05796}</UniqueIdentifier>
+    <Filter Include="System">
+      <UniqueIdentifier>{7bf62437-93f7-4ee4-aed4-8877416182fd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Enemy">
-      <UniqueIdentifier>{cb375182-d2f9-4306-b3b4-bf14ba0522f3}</UniqueIdentifier>
+    <Filter Include="Player">
+      <UniqueIdentifier>{ed3ba412-9474-479c-886a-e305d7fd9a1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obj">
+      <UniqueIdentifier>{71139611-cf6d-43f2-b55e-8f60d993e3b2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprites.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Animations.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Textures.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyEventHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Brick.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Portal.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Utils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayScene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Tank.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Tank_Body.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Ball_Carry.h">
-      <Filter>Header Files\Enemy</Filter>
+      <Filter>Enemy</Filter>
     </ClInclude>
     <ClInclude Include="Ballbot.h">
-      <Filter>Header Files\Enemy</Filter>
+      <Filter>Enemy</Filter>
     </ClInclude>
     <ClInclude Include="Drap.h">
-      <Filter>Header Files\Enemy</Filter>
+      <Filter>Enemy</Filter>
     </ClInclude>
     <ClInclude Include="Eyelet.h">
-      <Filter>Header Files\Enemy</Filter>
+      <Filter>Enemy</Filter>
     </ClInclude>
     <ClInclude Include="GX_680.h">
-      <Filter>Header Files\Enemy</Filter>
+      <Filter>Enemy</Filter>
     </ClInclude>
     <ClInclude Include="GX_680S.h">
-      <Filter>Header Files\Enemy</Filter>
+      <Filter>Enemy</Filter>
     </ClInclude>
     <ClInclude Include="Interrupt.h">
-      <Filter>Header Files\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Stuka.h">
-      <Filter>Header Files\Enemy</Filter>
+      <Filter>Enemy</Filter>
     </ClInclude>
     <ClInclude Include="LaserGuard.h">
-      <Filter>Header Files\Enemy</Filter>
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Stuka.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Animations.h">
+      <Filter>System</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>Header Files</Filter>
+      <Filter>System</Filter>
     </ClInclude>
-    <ClInclude Include="Tank_Bullet.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Game.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyEventHandler.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>System</Filter>
     </ClInclude>
     <ClInclude Include="MapObj.h">
-      <Filter>Header Files</Filter>
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayScene.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprites.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Tank_Body.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Brick.h">
+      <Filter>Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="Portal.h">
+      <Filter>Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="Tank_Bullet.h">
+      <Filter>Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="SoPhia.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="DefinePlayer.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Tank_Wheel.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Tank_Turret.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Interrupt_Bullet.h">
+      <Filter>Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="RebWorm.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Iterrupt_Firing.h">
+      <Filter>Obj</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprites.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Animations.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Textures.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Brick.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Utils.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Portal.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tank.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tank_Body.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QuadTree.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Ball_Carry.cpp">
-      <Filter>Source Files\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Ballbot.cpp">
-      <Filter>Source Files\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Drap.cpp">
-      <Filter>Source Files\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Eyelet.cpp">
-      <Filter>Source Files\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="GX_680.cpp">
-      <Filter>Source Files\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="GX_680S.cpp">
-      <Filter>Source Files\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Interrupt.cpp">
-      <Filter>Source Files\Enemy</Filter>
+    <ClCompile Include="Stuka.cpp">
+      <Filter>Enemy</Filter>
     </ClCompile>
     <ClCompile Include="LaserGuard.cpp">
-      <Filter>Source Files\Enemy</Filter>
+      <Filter>Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="Stuka.cpp">
-      <Filter>Source Files\Enemy</Filter>
+    <ClCompile Include="Interrupt.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="GX_680S.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="GX_680.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Eyelet.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Ball_Carry.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Ballbot.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Drap.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Animations.cpp">
+      <Filter>System</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>System</Filter>
     </ClCompile>
-    <ClCompile Include="Tank_Bullet.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Game.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>System</Filter>
     </ClCompile>
     <ClCompile Include="MapObj.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadTree.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprites.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Tank_Body.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Brick.cpp">
+      <Filter>Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Portal.cpp">
+      <Filter>Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Tank_Bullet.cpp">
+      <Filter>Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="SoPhia.cpp">
+      <Filter>Player</Filter>
     </ClCompile>
     <ClCompile Include="PlayScene.cpp">
-      <Filter>Source Files\Enemy</Filter>
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Tank_Wheel.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Tank_Turret.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Interrupt_Bullet.cpp">
+      <Filter>Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="RebWorm.cpp">
+      <Filter>Enemy</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

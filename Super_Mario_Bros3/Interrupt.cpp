@@ -1,50 +1,61 @@
 #include "Interrupt.h"
-
-
 CInterrupt::CInterrupt()
 {
-	SetState(INTERRUPT_STATE_IDLE);
-	//SetState(DRAP_STATE_WALKING_DOWN);
+	SetState(STATE_IDLE);
 }
 
 void CInterrupt::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
 	left = x;
 	top = y;
-	right = x + INTERRUPT_BBOX_WIDTH;
+	right = x + CINTERRUPT_BBOX_WIDTH;
 
-	if (state == INTERRUPT_STATE_DIE)
-		bottom = y + INTERRUPT_BBOX_HEIGHT_DIE;
+	if (state == STATE_DIE)
+		bottom = y + CINTERRUPT_BBOX_HEIGHT_DIE;
 	else
-		bottom = y + INTERRUPT_BBOX_HEIGHT;
+		bottom = y + CINTERRUPT_BBOX_HEIGHT;
 }
 
 void CInterrupt::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
+	CPlayScene* playscene = ((CPlayScene*)CGame::GetInstance()->GetCurrentScene());
 	CGameObject::Update(dt, coObjects);
 
 	//
 	// TO-DO: make sure Goomba can interact with the world and to each of them too!
 	// 
 
-	
+	x += dx;
+	y += dy;
+
+	float px, py;
+
+	((CPlayScene*)CGame::GetInstance()->GetCurrentScene())->GetPlayer()->GetPosition(px, py);
+	if (state != CINTERRUPT_STATE_OPEN)
+		if (this->x < px + SOPHIA_BIG_BBOX_WIDTH && this->x + CINTERRUPT_BBOX_WIDTH >= px)
+		{
+			SetState(CINTERRUPT_STATE_OPEN);
+			playscene->AddCInterrupt_FiringList(this->x, this->y);
+		}
+
 }
 
 void CInterrupt::Render()
 {
-	int ani = INTERRUPT_ANI_IDLE;
-	if (state == INTERRUPT_STATE_DIE) {
-		ani = INTERRUPT_ANI_DIE;
-	}
-	else if(state == INTERRUPT_STATE_IDLE)
+	if (state != STATE_DIE)
 	{
-		ani = INTERRUPT_ANI_IDLE;
-	}else if(state = INTERRUPT_STATE_DROP)
-		ani = INTERRUPT_ANI_DROP;
+		int ani = CINTERRUPT_ANI_IDLE;
+		switch (state)
+		{
+		case CINTERRUPT_STATE_OPEN:
+			ani = CINTERRUPT_ANI_OPEN;
+			break;
+		}
 
-	animation_set->at(ani)->Render(x, y);
+		animation_set->at(ani)->Render(x, y);
 
-	//RenderBoundingBox();
+		//RenderBoundingBox();
+	}
 }
 
 void CInterrupt::SetState(int state)
@@ -52,15 +63,12 @@ void CInterrupt::SetState(int state)
 	CGameObject::SetState(state);
 	switch (state)
 	{
-	case INTERRUPT_STATE_DIE:
-		y += INTERRUPT_BBOX_HEIGHT - INTERRUPT_BBOX_HEIGHT_DIE + 1;
+	case STATE_IDLE:
 		vx = 0;
 		vy = 0;
 		break;
-	case INTERRUPT_STATE_IDLE:
-		break;
-	case INTERRUPT_STATE_DROP:
+	case STATE_DIE:
+		vy = DIE_PULL;
 		break;
 	}
 }
-

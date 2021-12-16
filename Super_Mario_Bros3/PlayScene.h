@@ -3,12 +3,11 @@
 #include "Textures.h"
 #include "Scene.h"
 #include "GameObject.h"
+#include "MapObj.h"
 #include "Brick.h"
-#include "Tank_Body.h"
 #include "Eyelet.h"
 #include "Stuka.h"
 #include "Map.h"
-#include "Tank.h"
 #include "Ball_Carry.h"
 #include "Ballbot.h"
 #include "GX_680.h"
@@ -16,8 +15,14 @@
 #include "Drap.h"
 #include "LaserGuard.h"
 #include "Interrupt.h"
+#include "RebWorm.h"
+#include "Tank_Turret.h"
 #include "Tank_Bullet.h"
-#include "MapObj.h"
+#include "Tank_Body.h"
+#include "SoPhia.h"
+#include "Tank_Wheel.h"
+#include "Iterrupt_Firing.h"
+#include "Interrupt_Bullet.h"
 
 
 #include "Utils.h"
@@ -25,6 +30,10 @@
 #include <iostream>
 #include <fstream>
 
+
+#define QUADTREE_SECTION_SETTINGS	1
+#define QUADTREE_SECTION_OBJECTS	2
+#define MAX_QUADTREE_LINE 1024
 
 #define QUADTREE_SECTION_SETTINGS	1
 #define QUADTREE_SECTION_OBJECTS	2
@@ -71,11 +80,13 @@ public:
 class CPlayScene : public CScene
 {
 protected:
-	CTank_Body* player;					// A play scene has to have player, right? 
+	CSoPhia* player;					// A play scene has to have player, right? 
 	vector<LPGAMEOBJECT> objects;
 	int mapHeight;
 	Map* map;
 	CQuadTree* quadtree;
+	vector<CInterrupt_Firing*> CInterrupt_FiringList;
+	vector<CInterrupt_Firing*> WormSpamMng;
 
 	void _ParseSection_TEXTURES(string line);
 	void _ParseSection_SPRITES(string line);
@@ -95,7 +106,7 @@ public:
 
 	bool IsInUseArea(float Ox, float Oy);
 
-	CTank_Body* GetPlayer() { return player; }
+	CSoPhia* GetPlayer() { return player; }
 
 	void setMapheight(int height)
 	{
@@ -106,7 +117,47 @@ public:
 	{
 		return mapHeight;
 	}
-
+	/////////////////CInterrupt_FiringList
+	void AddCInterrupt_FiringList(float x, float y)
+	{
+		CInterrupt_Firing* obj = new CInterrupt_Firing(x, y);
+		this->CInterrupt_FiringList.push_back(obj);
+	}
+	CInterrupt_Firing* GetCInterrupt_FiringList()
+	{
+		return CInterrupt_FiringList.at(0);
+	}
+	bool CheckCInterrupt_FiringList()
+	{
+		if (CInterrupt_FiringList.size() != 0)
+			return true;
+		return false;
+	}
+	void DeleteCInterrupt_FiringList()
+	{
+		this->CInterrupt_FiringList.erase(CInterrupt_FiringList.begin());
+	}
+	//////////////////////////WormSpamMng
+	void AddWormSpamMng(float x, float y)
+	{
+		CInterrupt_Firing* obj = new CInterrupt_Firing(x, y);
+		this->WormSpamMng.push_back(obj);
+	}
+	CInterrupt_Firing* GetWormSpamMng()
+	{
+		return WormSpamMng.at(0);
+	}
+	bool CheckWormSpamMng()
+	{
+		if (WormSpamMng.size() != 0)
+			return true;
+		return false;
+	}
+	void DeleteWormSpamMng()
+	{
+		this->WormSpamMng.erase(WormSpamMng.begin());
+	}
+	///////////////////////////////
 	//friend class CPlayScenceKeyHandler;
 };
 
@@ -118,3 +169,4 @@ public:
 	virtual void OnKeyUp(int KeyCode);
 	CPlayScenceKeyHandler(CScene* s) :CScenceKeyHandler(s) {};
 };
+

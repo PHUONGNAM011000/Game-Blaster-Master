@@ -2,7 +2,7 @@
 #include "GameObject.h"
 #include "DefinePlayer.h"
 
-class Tank_Body : public CGameObject
+class Tank_Wheel : public CGameObject
 {
 	int part = 0;
 	int pre_ani = 0;
@@ -12,7 +12,8 @@ class Tank_Body : public CGameObject
 	void CalcPotentialCollisions(vector<LPGAMEOBJECT>* coObjects, vector<LPCOLLISIONEVENT>& coEvents);
 
 public:
-	Tank_Body();
+	float upBoudary;
+	Tank_Wheel(int part);
 	virtual void SetState(int state);
 };
 

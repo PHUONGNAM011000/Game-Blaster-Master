@@ -1,8 +1,7 @@
 #include "Eyelet.h"
 CEyelet::CEyelet()
 {
-	SetState(EYELET_STATE_WALKING_RIGHT);
-	SetState(EYELET_STATE_WALKING_DOWN);
+	SetState(STATE_IDLE);
 }
 
 void CEyelet::GetBoundingBox(float& left, float& top, float& right, float& bottom)
@@ -25,36 +24,20 @@ void CEyelet::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	// TO-DO: make sure Goomba can interact with the world and to each of them too!
 	// 
 
-	/*x += dx;
+	x += dx;
 	y += dy;
-
-	if (x <= LEFT_LIMIT && vx < 0) {
-		SetState(EYELET_STATE_WALKING_RIGHT);
-	}
-	else if (x >= RIGHT_LIMIT && vx > 0) {
-		SetState(EYELET_STATE_WALKING_LEFT);
-	}
-
-	else if (y <= TOP_LIMIT && vy < 0) {
-		SetState(EYELET_STATE_WALKING_DOWN);
-	}
-	else if (y >= BOTTOM_LIMIT && vy > 0) {
-		SetState(EYELET_STATE_WALKING_UP);
-	}*/
 }
 
 void CEyelet::Render()
 {
-	int ani;
-	if (vx > 0)
-		ani = EYELET_ANI_WALKING_RIGHT;
-	else if (vx < 0)
-		ani = EYELET_ANI_WALKING_LEFT;
-	else ani = EYELET_ANI_DIE;
+	if (state != STATE_DIE)
+	{
+		int ani = EYELET_ANI;
 
-	animation_set->at(ani)->Render(x, y);
+		animation_set->at(ani)->Render(x, y);
 
-	//RenderBoundingBox();
+		//RenderBoundingBox();
+	}
 }
 
 void CEyelet::SetState(int state)
@@ -62,25 +45,13 @@ void CEyelet::SetState(int state)
 	CGameObject::SetState(state);
 	switch (state)
 	{
-	case EYELET_STATE_DIE:
-		y += EYELET_BBOX_HEIGHT - EYELET_BBOX_HEIGHT_DIE + 1;
+	case STATE_IDLE:
 		vx = 0;
 		vy = 0;
 		break;
-	case EYELET_STATE_WALKING_RIGHT:
-		vx = EYELET_WALKING_SPEED;
-
+	case STATE_DIE:
+		vy = DIE_PULL;
 		break;
-	case EYELET_STATE_WALKING_LEFT:
-		vx = -EYELET_WALKING_SPEED;
 
-		break;
-	case EYELET_STATE_WALKING_UP:
-		vy = -EYELET_WALKING_SPEED;
-
-		break;
-	case EYELET_STATE_WALKING_DOWN:
-
-		vy = EYELET_WALKING_SPEED;
 	}
 }
