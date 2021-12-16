@@ -1,15 +1,15 @@
 #include "PlayScene.h"
+#include "Portal.h"
 #define OBJECT_TYPE_BRICK	1
-#define OBJECT_TYPE_GOOMBA	2
-#define OBJECT_TYPE_LASERGUARD	3
-#define OBJECT_TYPE_BALLCARRY	4
-#define OBJECT_TYPE_BALLBOT	5
-#define OBJECT_TYPE_DRAP	6
-#define OBJECT_TYPE_CGX680	7
-#define OBJECT_TYPE_CGX680S	8
-#define OBJECT_TYPE_CSTUKA	9
-#define OBJECT_TYPE_EYELET	10
-#define OBJECT_TYPE_CINTERCRUPT	11
+#define OBJECT_TYPE_EYELET	2
+#define OBJECT_TYPE_STUKA	3
+#define OBJECT_TYPE_BALLCARRY 4	
+#define OBJECT_TYPE_BALLBOT 5
+#define OBJECT_TYPE_GX680	6
+#define OBJECT_TYPE_GX680S	7
+#define OBJECT_TYPE_DRAP	8
+#define OBJECT_TYPE_LASERGUARD	9
+#define OBJECT_TYPE_INTERRUPT	10
 
 
 #define OBJECT_TYPE_PORTAL	50
@@ -110,19 +110,23 @@ void CQuadTree::_ParseSection_OBJECTS(string line)
 
 	switch (object_type)
 	{
-	case OBJECT_TYPE_GOOMBA: obj = new CGoomba(); break;
+	case OBJECT_TYPE_EYELET: obj = new CEyelet(); break;
 	case OBJECT_TYPE_BRICK: obj = new CBrick(); break;
-	case OBJECT_TYPE_LASERGUARD: obj = new CLaserGuard(); break;
-	case OBJECT_TYPE_BALLCARRY: obj = new CBallCarry(); break;
-	case OBJECT_TYPE_BALLBOT: obj = new CBallBot(); break;
+	case OBJECT_TYPE_STUKA: obj = new CStuka(); break;
+	case OBJECT_TYPE_BALLCARRY: obj = new CBall_Carry(); break;
+	case OBJECT_TYPE_BALLBOT: obj = new CBallbot(); break;
+	case OBJECT_TYPE_GX680: obj = new CGX_680(); break;
+	case OBJECT_TYPE_GX680S: obj = new CGX_680S(); break;
 	case OBJECT_TYPE_DRAP: obj = new CDrap(); break;
-	case OBJECT_TYPE_CGX680: obj = new CGX680(); break;
-	case OBJECT_TYPE_CGX680S: obj = new CGX680S(); break;
-	case OBJECT_TYPE_CSTUKA: obj = new CSTUKA(); break;
-	case OBJECT_TYPE_EYELET: obj = new CEYELET(); break;
-	case OBJECT_TYPE_CINTERCRUPT: obj = new CINTERRUPT(); break;
-		
-		
+	case OBJECT_TYPE_LASERGUARD: obj = new CLaserGuard(); break;
+	case OBJECT_TYPE_INTERRUPT: obj = new CInterrupt(); break;
+	case OBJECT_TYPE_PORTAL:
+	{
+		float r = atof(tokens[4].c_str());
+		float b = atof(tokens[5].c_str());
+		int scene_id = atoi(tokens[6].c_str());
+		obj = new CPortal(x, y, r, b, scene_id);
+	}
 	default:
 		DebugOut(L"[ERR] Invalid object type: %d\n", object_type);
 		return;
@@ -241,15 +245,15 @@ void CQuadTree::Pop(vector<LPGAMEOBJECT>& listObject, int CamX, int CamY)
 		for (int i = 0; i < listObjects.size(); i++)
 		{
 			if (inRange(x + cellWidth, y + cellHeight, CamX, CamY, CGame::GetInstance()->GetScreenWidth(), CGame::GetInstance()->GetScreenHeight()))
-			if (!listObjects[i]->GetActive())
-			{
-				float Ox, Oy;
-				listObjects[i]->GetOriginLocation(Ox, Oy);
-				if (!inRange(Ox, Oy, CamX, CamY, CGame::GetInstance()->GetScreenWidth(), CGame::GetInstance()->GetScreenHeight()))
-					listObjects[i]->reset();
-				listObject.push_back(listObjects[i]);
-				listObjects[i]->SetActive(true);
-			}
+				if (!listObjects[i]->GetActive())
+				{
+					float Ox, Oy;
+					listObjects[i]->GetOriginLocation(Ox, Oy);
+					if (!inRange(Ox, Oy, CamX, CamY, CGame::GetInstance()->GetScreenWidth(), CGame::GetInstance()->GetScreenHeight()))
+						listObjects[i]->reset();
+					listObject.push_back(listObjects[i]);
+					listObjects[i]->SetActive(true);
+				}
 		}
 		return;
 	}
@@ -258,7 +262,7 @@ void CQuadTree::Pop(vector<LPGAMEOBJECT>& listObject, int CamX, int CamY)
 	BrachTR->Pop(listObject, CamX, CamY);
 	BrachBL->Pop(listObject, CamX, CamY);
 	BrachBR->Pop(listObject, CamX, CamY);
-		
+
 }
 
 void CQuadTree::Unload()

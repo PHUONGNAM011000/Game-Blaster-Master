@@ -238,18 +238,18 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 			DebugOut(L"[ERROR] TANK_BODY object was created before!\n");
 			return;
 		}
-		obj = new CTANK_BODY(x, getMapheight() - y);
+		obj = new CTank_Body(x, getMapheight() - y);
 		//obj = new CTANK_BODY(x,y);
-		DebugOut(L"RRRRRRRRRrY Xe la %d  %f  \n", getMapheight(),y);
+		DebugOut(L"RRRRRRRRRrY Xe la %d  %f  \n", getMapheight(), y);
 
-		player = (CTANK_BODY*)obj;
+		player = (CTank_Body*)obj;
 
 		DebugOut(L"[INFO] Player object created!\n");
 
 		break;
 	case OBJECT_TYPE_BRICK: obj = new CBrick(); break;
-	case OBJECT_TYPE_CTANKBULLET: obj = new CTANKBULLET(); break;
-		
+	case OBJECT_TYPE_CTANKBULLET: obj = new CTank_Bullet(); break;
+
 	case OBJECT_TYPE_TANK_PART:
 	{
 		float part = atof(tokens[4].c_str());
@@ -264,7 +264,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		obj = new CPortal(x, y, r, b, scene_id);
 	}
 	break;
-	
+
 	default:
 		DebugOut(L"[ERR] Invalid object type: %d\n", object_type);
 		return;
@@ -275,10 +275,10 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 
 	LPANIMATION_SET ani_set = animation_sets->Get(ani_set_id);
 
-	if (obj != NULL )
+	if (obj != NULL)
 	{
-		if(object_type != OBJECT_TYPE_TANK_BODY)
-		obj->SetPosition(x, getMapheight() - y);
+		if (object_type != OBJECT_TYPE_TANK_BODY)
+			obj->SetPosition(x, getMapheight() - y);
 		obj->SetAnimationSet(ani_set);
 		obj->SetOrigin(x, y, obj->GetState());
 		obj->SetisOriginObj(true);
@@ -336,7 +336,7 @@ void CPlayScene::Update(DWORD dt)
 	cy = cy;
 
 	/*DebugOut(L"Y: la %d %f  \n", CGame::GetInstance()->GetCurrentScene()->getMapheight(), cy);*/
-	
+
 	CGame* game = CGame::GetInstance();
 
 	cx -= game->GetScreenWidth() / 2;
@@ -406,7 +406,7 @@ void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 {
 	//DebugOut(L"[INFO] KeyDown: %d\n", KeyCode);
 
-	CTANK_BODY* mario = ((CPlayScene*)scence)->GetPlayer();
+	CTank_Body* mario = ((CPlayScene*)scence)->GetPlayer();
 	switch (KeyCode)
 	{
 	case DIK_SPACE:
@@ -423,20 +423,20 @@ void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 
 void CPlayScenceKeyHandler::OnKeyUp(int KeyCode)
 {
-	CTANK_BODY* mario = ((CPlayScene*)scence)->GetPlayer();
-		switch (KeyCode)
-		{
-		case DIK_A:
-			mario->SetisFiring(false);
-			mario->SetisAlreadyFired(false);
-			break;
-		}
+	CTank_Body* mario = ((CPlayScene*)scence)->GetPlayer();
+	switch (KeyCode)
+	{
+	case DIK_A:
+		mario->SetisFiring(false);
+		mario->SetisAlreadyFired(false);
+		break;
+	}
 }
 
 void CPlayScenceKeyHandler::KeyState(BYTE* states)
 {
 	CGame* game = CGame::GetInstance();
-	CTANK_BODY* mario = ((CPlayScene*)scence)->GetPlayer();
+	CTank_Body* mario = ((CPlayScene*)scence)->GetPlayer();
 
 	// disable control key when TANK_BODY die 
 	if (mario->GetState() == TANK_BODY_STATE_DIE) return;

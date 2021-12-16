@@ -5,10 +5,11 @@
 #include "TANK_BODY.h"
 #include "Game.h"
 
-#include "Eye.h"
+#include "Eyelet.h"
+#include "Interrupt.h"
 #include "Portal.h"
 
-CTANK_BODY::CTANK_BODY(float x, float y) : CGameObject()
+CTank_Body::CTank_Body(float x, float y) : CGameObject()
 {
 	untouchable = 0;
 	SetState(TANK_BODY_STATE_IDLE);
@@ -17,16 +18,16 @@ CTANK_BODY::CTANK_BODY(float x, float y) : CGameObject()
 	start_y = y;
 	this->x = x;
 	this->y = y;
-	
+
 }
 
-void CTANK_BODY::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
+void CTank_Body::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	// Calculate dx, dy 
 	CGameObject::Update(dt);
 
 	// Simple fall down
-	//vy += TANK_BODY_GRAVITY * dt;
+	vy += TANK_BODY_GRAVITY * dt;
 
 	vector<LPCOLLISIONEVENT> coEvents;
 	vector<LPCOLLISIONEVENT> coEventsResult;
@@ -76,6 +77,26 @@ void CTANK_BODY::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		for (UINT i = 0; i < coEventsResult.size(); i++)
 		{
 			LPCOLLISIONEVENT e = coEventsResult[i];
+			if (dynamic_cast<CInterrupt*>(e->obj)) // if e->obj is Goomba 
+			{
+				CInterrupt* goomba = dynamic_cast<CInterrupt*>(e->obj);
+
+				// jump on top >> kill Goomba and deflect a bit 
+				if (e->nx != 0|| e->ny != 0)
+				{
+					if (goomba->GetState() != INTERRUPT_STATE_DIE)
+					{
+						goomba->SetState(INTERRUPT_STATE_DIE);
+						//goomba->x = 999999;
+						//vy = -MARIO_JUMP_DEFLECT_SPEED;
+					}
+				}
+			}
+			if (dynamic_cast<CPortal*>(e->obj))
+			{
+				CPortal* p = dynamic_cast<CPortal*>(e->obj);
+				CGame::GetInstance()->SwitchScene(p->GetSceneId());
+			}
 		}
 	}
 
@@ -83,9 +104,9 @@ void CTANK_BODY::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 }
 
-void CTANK_BODY::Render()
+void CTank_Body::Render()
 {
-	
+
 	int ani = -1;
 	if (state == TANK_BODY_STATE_DIE)
 		ani = TANK_BODY_ANI_DIE;
@@ -109,7 +130,7 @@ void CTANK_BODY::Render()
 	//RenderBoundingBox();
 }
 
-void CTANK_BODY::SetState(int state)
+void CTank_Body::SetState(int state)
 {
 	CGameObject::SetState(state);
 
@@ -135,7 +156,7 @@ void CTANK_BODY::SetState(int state)
 		break;
 	case TANK_BODY_STATE_IDLE:
 		vx = 0;
-		vy = 0;
+		//vy = 0;
 		break;
 	case TANK_BODY_STATE_DIE:
 		vy = TANK_BODY_DIE_DEFLECT_SPEED;
@@ -143,12 +164,12 @@ void CTANK_BODY::SetState(int state)
 	}
 }
 
-void CTANK_BODY::GetBoundingBox(float& left, float& top, float& right, float& bottom)
+void CTank_Body::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
-	left = x - 10;
-	top = y - 9;
+	left = x-10;
+	top = y-3;
 
-	right = x + TANK_BODY_BIG_BBOX_WIDTH + 9;
+	right = x + TANK_BODY_BIG_BBOX_WIDTH ;
 	bottom = y + TANK_BODY_BIG_BBOX_HEIGHT;
 
 	DebugOut(L"L T R B %f %f %f %f  \n", left, top, right, bottom);
@@ -157,7 +178,7 @@ void CTANK_BODY::GetBoundingBox(float& left, float& top, float& right, float& bo
 /*
 	Reset TANK_BODY status to the beginning state of a scene
 */
-void CTANK_BODY::Reset()
+void CTank_Body::Reset()
 {
 	SetState(TANK_BODY_STATE_IDLE);
 	SetLevel(TANK_BODY_LEVEL_BIG);
@@ -165,17 +186,17 @@ void CTANK_BODY::Reset()
 	SetSpeed(0, 0);
 }
 
-void CTANK_BODY::CalcPotentialCollisions(
+void CTank_Body::CalcPotentialCollisions(
 	vector<LPGAMEOBJECT>* coObjects,
 	vector<LPCOLLISIONEVENT>& coEvents)
 {
 	vector <LPCOLLISIONEVENT> collisionEvents;
-	CTANK_BODY* mario = ((CPlayScene*)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
+	CTank_Body* mario = ((CPlayScene*)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
 	for (UINT i = 0; i < coObjects->size(); i++)
 	{
 		LPCOLLISIONEVENT e = SweptAABBEx(coObjects->at(i));
 
-		if (dynamic_cast<CTANKBULLET*>(e->obj))
+		if (dynamic_cast<CTank_Bullet*>(e->obj))
 		{
 			continue;
 		}

@@ -18,7 +18,7 @@
 #define STORING_LOCATION 5000
 
 
-class CTANKBULLET : public CGameObject
+class CTank_Bullet : public CGameObject
 {
 	DWORD reset_start;
 	bool isUsed = false;
@@ -29,7 +29,7 @@ class CTANKBULLET : public CGameObject
 	void StartReset() { reset_start = (DWORD)GetTickCount64(); }
 
 public:
-	CTANKBULLET();
+	CTank_Bullet();
 	void SetisUsed(bool value) { isUsed = value; }
 	bool GetisUsed() { return isUsed; }
 	virtual void SetState(int state);

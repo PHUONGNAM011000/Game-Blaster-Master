@@ -4,22 +4,21 @@
 #include "Scene.h"
 #include "GameObject.h"
 #include "Brick.h"
-#include "TANK_BODY.h"
-#include "Eye.h"
-#include "Koopas.h"
-#include "Map.h"
-#include "TankParts.h"
-#include "MapObj.h"
-#include "CLaserGuard.h"
-#include "CBallCarry.h"
-#include "CBallbot.h"
-#include "CDrap.h"
-#include "CGX680.h"
-#include "CGX680S.h"
-#include "CSTUKA.h"
+#include "Tank_Body.h"
 #include "Eyelet.h"
+#include "Stuka.h"
+#include "Map.h"
+#include "Tank.h"
+#include "Ball_Carry.h"
+#include "Ballbot.h"
+#include "GX_680.h"
+#include "GX_680S.h"
+#include "Drap.h"
+#include "LaserGuard.h"
 #include "Interrupt.h"
-#include "CTANKBULLET.h"
+#include "Tank_Bullet.h"
+#include "MapObj.h"
+
 
 #include "Utils.h"
 #include "Game.h"
@@ -58,7 +57,7 @@ public:
 	{
 		listObjects.push_back(obj);
 	}
-	int getVollunm(){
+	int getVollunm() {
 		return listObjects.size();
 	}
 	void Render();
@@ -72,7 +71,7 @@ public:
 class CPlayScene : public CScene
 {
 protected:
-	CTANK_BODY* player;					// A play scene has to have player, right? 
+	CTank_Body* player;					// A play scene has to have player, right? 
 	vector<LPGAMEOBJECT> objects;
 	int mapHeight;
 	Map* map;
@@ -96,7 +95,7 @@ public:
 
 	bool IsInUseArea(float Ox, float Oy);
 
-	CTANK_BODY* GetPlayer() { return player; }
+	CTank_Body* GetPlayer() { return player; }
 
 	void setMapheight(int height)
 	{
@@ -119,4 +118,3 @@ public:
 	virtual void OnKeyUp(int KeyCode);
 	CPlayScenceKeyHandler(CScene* s) :CScenceKeyHandler(s) {};
 };
-

@@ -41,7 +41,7 @@
 
 
 
-class CTANK_BODY : public CGameObject
+class CTank_Body : public CGameObject
 {
 	int level;
 	int untouchable;
@@ -54,7 +54,7 @@ class CTANK_BODY : public CGameObject
 	bool isAlreadyFired = 0;
 
 public:
-	CTANK_BODY(float x = 0.0f, float y = 0.0f);
+	CTank_Body(float x = 0.0f, float y = 0.0f);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* colliable_objects = NULL);
 	virtual void Render();
 	void CalcPotentialCollisions(vector<LPGAMEOBJECT>* coObjects, vector<LPCOLLISIONEVENT>& coEvents);
