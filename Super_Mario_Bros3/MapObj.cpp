@@ -1,7 +1,6 @@
-#include "MapObj.h"
-
 #include <fstream>
 #include <iostream>
+#include"MapObj.h"
 #include "Textures.h"
 
 MapObj::MapObj(int _totalRowsMap, int _totalColumnsMap)
@@ -33,7 +32,7 @@ void MapObj::Render(vector<LPGAMEOBJECT>& listObjects)
 		{
 			if (TileMap[r][c] != 0) {
 				obj = new CBrick();
-				obj->SetPosition(16 * c, 16 * r - 16);
+				obj->SetPosition(16*c, 16*r - 16);
 				obj->SetAnimationSet(ani_set);
 				obj->SetOrigin(16 * c, (16 * r) - 16, obj->GetState());
 				listObjects.push_back(obj);

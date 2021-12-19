@@ -38,6 +38,7 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath) :
 #define OBJECT_TYPE_CTANKBULLET	2
 #define OBJECT_TYPE_CINTERCRUPT_BULLET	12
 #define OBJECT_TYPE_RED_WORM	13
+#define OBJECT_TYPE_EFFECT	14
 
 #define OBJECT_TYPE_PORTAL	50
 
@@ -241,34 +242,39 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 			DebugOut(L"[ERROR] SOPHIA object was created before!\n");
 			return;
 		}
-		obj = new CSoPhia(x, getMapheight() - y);
+		obj = new CSOPHIA(x, getMapheight() - y);
 
-		player = (CSoPhia*)obj;
+		player = (CSOPHIA*)obj;
 
 		DebugOut(L"[INFO] Player object created!\n");
 
 		break;
 	case OBJECT_TYPE_BRICK: obj = new CBrick(); break;
-	case OBJECT_TYPE_CTANKBULLET: obj = new CTank_Bullet(); break;
-
+	case OBJECT_TYPE_CTANKBULLET: obj = new CTANKBULLET(); break;
+		
 	case OBJECT_TYPE_TANK_WHEEL:
 	{
 		float part = atof(tokens[4].c_str());
-		obj = new Tank_Wheel(part);
-
+		obj = new TANKWHEEL(part);
+		
 	}
 	break;
 	case OBJECT_TYPE_TANK_BODY:
 	{
-		obj = new Tank_Body();
+		obj = new TANKBODY();
 	}
 	break;
 	case OBJECT_TYPE_TANK_TURRET:
 	{
-		obj = new Tank_Turret();
+		obj = new TANKTURRET();
 	}
 	break;
-
+	case OBJECT_TYPE_EFFECT:
+	{
+		float time = atof(tokens[4].c_str());
+		obj = new EFFECT(time);
+	}
+	break;
 	case OBJECT_TYPE_PORTAL:
 	{
 		float r = atof(tokens[4].c_str());
@@ -276,11 +282,11 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		int scene_id = atoi(tokens[6].c_str());
 		obj = new CPortal(x, y, r, b, scene_id);
 	}
-	case OBJECT_TYPE_CINTERCRUPT_BULLET: obj = new CInterrup_Bullet(); break;
-	case OBJECT_TYPE_RED_WORM: obj = new CReDWorm(); break;
-
-		break;
-
+	case OBJECT_TYPE_CINTERCRUPT_BULLET: obj = new CINTERRUPT_BULLET(); break;
+	case OBJECT_TYPE_RED_WORM: obj = new CREDWORM(); break;
+		
+	break;
+	
 	default:
 		DebugOut(L"[ERR] Invalid object type: %d\n", object_type);
 		return;
@@ -291,10 +297,10 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 
 	LPANIMATION_SET ani_set = animation_sets->Get(ani_set_id);
 
-	if (obj != NULL)
+	if (obj != NULL )
 	{
-		if (object_type != OBJECT_TYPE_SOPHIA)
-			obj->SetPosition(x, getMapheight() - y);
+		if(object_type != OBJECT_TYPE_SOPHIA)
+		obj->SetPosition(x, getMapheight() - y);
 		obj->SetAnimationSet(ani_set);
 		obj->SetOrigin(x, y, obj->GetState());
 		obj->SetisOriginObj(true);
@@ -339,6 +345,13 @@ bool CPlayScene::IsInUseArea(float Ox, float Oy)
 	return false;
 }
 
+bool CPlayScene::IsInside(float Ox, float Oy, float xRange, float yRange, float tx, float ty)
+{
+	if (Ox <= tx && tx <= xRange && Oy <= ty && ty <= yRange)
+		return true;
+	return false;
+}
+
 void CPlayScene::Update(DWORD dt)
 {
 	// We know that SOPHIA is the first object in the list hence we won't add him into the colliable object list
@@ -355,7 +368,7 @@ void CPlayScene::Update(DWORD dt)
 	cy = cy;
 
 	/*DebugOut(L"Y: la %d %f  \n", CGame::GetInstance()->GetCurrentScene()->getMapheight(), cy);*/
-
+	
 	CGame* game = CGame::GetInstance();
 
 	cx -= game->GetScreenWidth() / 2;
@@ -425,7 +438,7 @@ void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 {
 	//DebugOut(L"[INFO] KeyDown: %d\n", KeyCode);
 
-	CSoPhia* mario = ((CPlayScene*)scence)->GetPlayer();
+	CSOPHIA* mario = ((CPlayScene*)scence)->GetPlayer();
 	switch (KeyCode)
 	{
 	case DIK_SPACE:
@@ -435,26 +448,26 @@ void CPlayScenceKeyHandler::OnKeyDown(int KeyCode)
 		mario->Reset();
 		break;
 	case DIK_A:
-		mario->SetisFiring(true);
+		mario->SetisFiring(true);	
 		break;
 	}
 }
 
 void CPlayScenceKeyHandler::OnKeyUp(int KeyCode)
 {
-	CSoPhia* mario = ((CPlayScene*)scence)->GetPlayer();
-	switch (KeyCode)
-	{
-	case DIK_A:
-		mario->SetisFiring(false);
-		break;
-	}
+	CSOPHIA* mario = ((CPlayScene*)scence)->GetPlayer();
+		switch (KeyCode)
+		{
+		case DIK_A:
+			mario->SetisFiring(false);
+			break;
+		}
 }
 
 void CPlayScenceKeyHandler::KeyState(BYTE* states)
 {
 	CGame* game = CGame::GetInstance();
-	CSoPhia* mario = ((CPlayScene*)scence)->GetPlayer();
+	CSOPHIA* mario = ((CPlayScene*)scence)->GetPlayer();
 
 	// disable control key when SOPHIA die 
 	if (mario->GetState() == SOPHIA_STATE_DIE) return;

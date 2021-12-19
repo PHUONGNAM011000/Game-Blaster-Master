@@ -3,37 +3,35 @@
 #include "Textures.h"
 #include "Scene.h"
 #include "GameObject.h"
-#include "MapObj.h"
 #include "Brick.h"
-#include "Eyelet.h"
-#include "Stuka.h"
+#include "SOPHIA.h"
+#include "Eye.h"
+#include "Koopas.h"
 #include "Map.h"
-#include "Ball_Carry.h"
-#include "Ballbot.h"
-#include "GX_680.h"
-#include "GX_680S.h"
-#include "Drap.h"
-#include "LaserGuard.h"
+#include "CTANKWHEELS.h"
+#include "MapObj.h"
+#include "CLaserGuard.h"
+#include "CBallCarry.h"
+#include "CBallbot.h"
+#include "CDRAP.h"
+#include "CGX680.h"
+#include "CGX680S.h"
+#include "CSTUKA.h"
+#include "Eyelet.h"
 #include "Interrupt.h"
-#include "RebWorm.h"
-#include "Tank_Turret.h"
-#include "Tank_Bullet.h"
-#include "Tank_Body.h"
-#include "SoPhia.h"
-#include "Tank_Wheel.h"
-#include "Iterrupt_Firing.h"
-#include "Interrupt_Bullet.h"
-
+#include "CTANKBULLET.h"
+#include "CEvenType1.h"
+#include "CINTERRUPT_BULLET.h"
+#include "CREDWORM.h"
+#include "TANKBODY.h"
+#include "TANKTURRET.h"
+#include "EFFECT.h"
 
 #include "Utils.h"
 #include "Game.h"
 #include <iostream>
 #include <fstream>
 
-
-#define QUADTREE_SECTION_SETTINGS	1
-#define QUADTREE_SECTION_OBJECTS	2
-#define MAX_QUADTREE_LINE 1024
 
 #define QUADTREE_SECTION_SETTINGS	1
 #define QUADTREE_SECTION_OBJECTS	2
@@ -66,7 +64,7 @@ public:
 	{
 		listObjects.push_back(obj);
 	}
-	int getVollunm() {
+	int getVollunm(){
 		return listObjects.size();
 	}
 	void Render();
@@ -80,13 +78,14 @@ public:
 class CPlayScene : public CScene
 {
 protected:
-	CSoPhia* player;					// A play scene has to have player, right? 
+	CSOPHIA* player;					// A play scene has to have player, right? 
 	vector<LPGAMEOBJECT> objects;
 	int mapHeight;
 	Map* map;
 	CQuadTree* quadtree;
-	vector<CInterrupt_Firing*> CInterrupt_FiringList;
-	vector<CInterrupt_Firing*> WormSpamMng;
+	vector<CEvenType1*> InterruptBulletMng ;
+	vector<CEvenType1*> WormSpamMng;
+	vector<CEvenType1*> KaboomMng;
 
 	void _ParseSection_TEXTURES(string line);
 	void _ParseSection_SPRITES(string line);
@@ -105,8 +104,9 @@ public:
 	virtual void Unload();
 
 	bool IsInUseArea(float Ox, float Oy);
+	bool IsInside(float Ox, float Oy, float xRange, float yRange, float tx, float ty);
 
-	CSoPhia* GetPlayer() { return player; }
+	CSOPHIA* GetPlayer() { return player; }
 
 	void setMapheight(int height)
 	{
@@ -117,33 +117,53 @@ public:
 	{
 		return mapHeight;
 	}
-	/////////////////CInterrupt_FiringList
-	void AddCInterrupt_FiringList(float x, float y)
+	/////////////////KaboomMng
+	void AddKaboomMng(float x, float y)
 	{
-		CInterrupt_Firing* obj = new CInterrupt_Firing(x, y);
-		this->CInterrupt_FiringList.push_back(obj);
+		CEvenType1* obj = new CEvenType1(x, y);
+		this->KaboomMng.push_back(obj);
 	}
-	CInterrupt_Firing* GetCInterrupt_FiringList()
+	CEvenType1* GetKaboomMng()
 	{
-		return CInterrupt_FiringList.at(0);
+		return KaboomMng.at(0);
 	}
-	bool CheckCInterrupt_FiringList()
+	bool CheckKaboomMng()
 	{
-		if (CInterrupt_FiringList.size() != 0)
+		if (KaboomMng.size() != 0)
 			return true;
 		return false;
 	}
-	void DeleteCInterrupt_FiringList()
+	void DeleteKaboomMng()
 	{
-		this->CInterrupt_FiringList.erase(CInterrupt_FiringList.begin());
+		this->KaboomMng.erase(KaboomMng.begin());
+	}
+	/////////////////InterruptBulletMng
+	void AddInterruptBulletMng(float x, float y)
+	{
+		CEvenType1* obj = new CEvenType1(x, y);
+		this->InterruptBulletMng.push_back(obj);
+	}
+	CEvenType1* GetInterruptBulletMng()
+	{
+		return InterruptBulletMng.at(0);
+	}
+	bool CheckInterruptBulletMng()
+	{
+		if (InterruptBulletMng.size() != 0)
+			return true;
+		return false;
+	}
+	void DeleteInterruptBulletMng()
+	{
+		this->InterruptBulletMng.erase(InterruptBulletMng.begin());
 	}
 	//////////////////////////WormSpamMng
 	void AddWormSpamMng(float x, float y)
 	{
-		CInterrupt_Firing* obj = new CInterrupt_Firing(x, y);
+		CEvenType1* obj = new CEvenType1(x, y);
 		this->WormSpamMng.push_back(obj);
 	}
-	CInterrupt_Firing* GetWormSpamMng()
+	CEvenType1* GetWormSpamMng()
 	{
 		return WormSpamMng.at(0);
 	}

@@ -1,28 +1,28 @@
 #pragma once
 #pragma once
 #include "GameObject.h"
-#include "Game.h"
-#include "PlayScene.h"
 #include "algorithm"
 
-#define CINTERRUPT_WALKING_SPEED 0.05f;
+#define CDRAP_WALKING_SPEED 0.05f;
 
-#define CINTERRUPT_BBOX_WIDTH 16
-#define CINTERRUPT_BBOX_HEIGHT 15
-#define CINTERRUPT_BBOX_HEIGHT_DIE 9
+#define CDRAP_BBOX_WIDTH 16
+#define CDRAP_BBOX_HEIGHT 15
+#define CDRAP_BBOX_HEIGHT_DIE 9
 
-#define CINTERRUPT_STATE_IDLE 1000
-#define CINTERRUPT_STATE_OPEN 1001
+#define CDRAP_STATE_WALKING_RIGHT 1000
+#define CDRAP_STATE_WALKING_LEFT 1001
+#define CDRAP_STATE_WALKING_UP 1002
+#define CDRAP_STATE_WALKING_DOWN 1003
 
-#define CINTERRUPT_ANI_IDLE 0
-#define CINTERRUPT_ANI_OPEN 1
+#define CDRAP_ANI 0
 
-#define CINTERRUPT_STATE_IDLE 100
-#define CINTERRUPT_STATE_DIE 200
-#define CINTERRUPT_STATE_WALKING 300
+#define CDRAP_STATE_IDLE 100
+#define CDRAP_STATE_DIE 200
+#define CDRAP_STATE_WALKING 300
 
 
-class CINTERRUPT : public CGameObject
+
+class CDRAP : public CGameObject
 {
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
@@ -31,6 +31,6 @@ class CINTERRUPT : public CGameObject
 	virtual void Render();
 
 public:
-	CINTERRUPT();
+	CDRAP();
 	virtual void SetState(int state);
 };

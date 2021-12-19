@@ -1,13 +1,14 @@
-#include "SoPhia.h"
 #include <algorithm>
 #include <assert.h>
 #include "Utils.h"
 
+#include "SOPHIA.h"
 #include "Game.h"
 
+#include "PlayScene.h"
 #include "Portal.h"
 
-CSoPhia::CSoPhia(float x, float y) : CGameObject()
+CSOPHIA::CSOPHIA(float x, float y) : CGameObject()
 {
 	untouchable = 0;
 	SetState(SOPHIA_STATE_IDLE);
@@ -16,10 +17,10 @@ CSoPhia::CSoPhia(float x, float y) : CGameObject()
 	start_y = y;
 	this->x = x;
 	this->y = y;
-
+	
 }
 
-void CSoPhia::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
+void CSOPHIA::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	// Calculate dx, dy 
 	CGameObject::Update(dt);
@@ -70,7 +71,7 @@ void CSoPhia::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 		// block every object first!
 		x += min_tx * dx + nx * 0.4f;
-		y += min_ty * dy + ny * 0.4f;
+		//y += min_ty * dy + ny * 0.4f;
 
 		if (nx != 0) vx = 0;
 		if (ny != 0) vy = 0;
@@ -88,7 +89,7 @@ void CSoPhia::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 }
 
-void CSoPhia::Render()
+void CSOPHIA::Render()
 {
 	//
 	//int ani = -1;
@@ -111,20 +112,20 @@ void CSoPhia::Render()
 
 	//animation_set->at(ani)->Render(x, y, alpha);
 
-	//RenderBoundingBox();
+	////RenderBoundingBox();
 }
 
-void CSoPhia::SetState(int state)
+void CSOPHIA::SetState(int state)
 {
 	CGameObject::SetState(state);
 
 	switch (state)
 	{
 	case SOPHIA_STATE_WALKING_DOWN:
-		//vy = SOPHIA_WALKING_SPEED;
+		vy = SOPHIA_WALKING_SPEED;
 		break;
 	case SOPHIA_STATE_WALKING_UP:
-		//vy = -SOPHIA_WALKING_SPEED;
+		vy = -SOPHIA_WALKING_SPEED;
 		break;
 	case SOPHIA_STATE_WALKING_RIGHT:
 		vx = SOPHIA_WALKING_SPEED;
@@ -147,7 +148,7 @@ void CSoPhia::SetState(int state)
 	}
 }
 
-void CSoPhia::GetBoundingBox(float& left, float& top, float& right, float& bottom)
+void CSOPHIA::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
 	left = x;
 	top = y;
@@ -155,28 +156,32 @@ void CSoPhia::GetBoundingBox(float& left, float& top, float& right, float& botto
 	right = x + SOPHIA_BIG_BBOX_WIDTH;
 	bottom = y + SOPHIA_BIG_BBOX_HEIGHT;
 
-	DebugOut(L"L T R B %f %f %f %f  \n", left, top, right, bottom);
+	//DebugOut(L"L T R B %f %f %f %f  \n", left, top, right, bottom);
 }
 
 /*
 	Reset SOPHIA status to the beginning state of a scene
 */
-void CSoPhia::Reset()
+void CSOPHIA::Reset()
 {
 	SetState(SOPHIA_STATE_IDLE);
 }
 
-void CSoPhia::CalcPotentialCollisions(
+void CSOPHIA::CalcPotentialCollisions(
 	vector<LPGAMEOBJECT>* coObjects,
 	vector<LPCOLLISIONEVENT>& coEvents)
 {
 	vector <LPCOLLISIONEVENT> collisionEvents;
-	CSoPhia* mario = ((CPlayScene*)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
+	CSOPHIA* mario = ((CPlayScene*)CGame::GetInstance()->GetCurrentScene())->GetPlayer();
 	for (UINT i = 0; i < coObjects->size(); i++)
 	{
 		LPCOLLISIONEVENT e = SweptAABBEx(coObjects->at(i));
 
-		if (dynamic_cast<CTank_Bullet*>(e->obj) || dynamic_cast<CReDWorm*>(e->obj))
+		if (dynamic_cast<CTANKBULLET*>(e->obj) || dynamic_cast<CREDWORM*>(e->obj))
+		{
+			continue;
+		}
+		if (dynamic_cast<CEYELET*>(e->obj) && e->obj->GetState() == EYELET_STATE_IDLE)
 		{
 			continue;
 		}
@@ -200,5 +205,4 @@ void CSoPhia::CalcPotentialCollisions(
 			delete e;
 	}
 }
-
 
