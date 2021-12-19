@@ -1,4 +1,4 @@
-#include "CSTUKA.h"
+#include "STUKA.h"
 CSTUKA::CSTUKA()
 {
 	SetState(STATE_IDLE);
