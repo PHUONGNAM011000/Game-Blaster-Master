@@ -33,7 +33,7 @@ void CQuadTree::Plit() {
 	if (listObjects.size() == 0)
 		return;
 	CGame* game = CGame::GetInstance();
-	if (cellHeight > game->GetScreenHeight() / 2 || cellWidth > game->GetScreenWidth() / 2)
+	if (cellHeight > game->GetScreenHeight() / 8 || cellWidth > game->GetScreenWidth() / 8)
 	{
 		BrachTL = new CQuadTree(cellWidth / 2, cellHeight / 2, x, y);
 		BrachTR = new CQuadTree(cellWidth / 2, cellHeight / 2, x + cellWidth / 2, y);
@@ -229,23 +229,13 @@ void CQuadTree::GetObjects(vector<LPGAMEOBJECT>& listObject, int CamX, int CamY)
 
 void CQuadTree::Pop(vector<LPGAMEOBJECT>& listObject, int CamX, int CamY)
 {
-	unsigned int  left, top, right, bottom;
-
-	left = (CamX);
-
-	right = (CamX + CGame::GetInstance()->GetScreenWidth());
-
-	top = (CamY);
-
-	bottom = (CamY + CGame::GetInstance()->GetScreenHeight());
-
 	if (this == NULL)
 		return;
 	if (isLeaf)
 	{
 		for (int i = 0; i < listObjects.size(); i++)
 		{
-			if (inRange(x + cellWidth, y + cellHeight, CamX, CamY, CGame::GetInstance()->GetScreenWidth(), CGame::GetInstance()->GetScreenHeight() + 100))
+			if (inRange(x + cellWidth, y + cellHeight, CamX, CamY, CGame::GetInstance()->GetScreenWidth(), CGame::GetInstance()->GetScreenHeight()))
 			if (!listObjects[i]->GetActive())
 			{
 				float Ox, Oy;

@@ -10,28 +10,33 @@
 #include "Map.h"
 #include "CTANKWHEELS.h"
 #include "MapObj.h"
-#include "CLaserGuard.h"
+#include "LaserGuard.h"
 #include "BallCarry.h"
-#include "Ballbot.h"
+#include "BallBot.h"
 #include "DRAP.h"
-#include "CGX680.h"
-#include "CGX680S.h"
+#include "GX680.h"
+#include "GX680S.h"
 #include "STUKA.h"
 #include "Eyelet.h"
 #include "Interrupt.h"
 #include "CTANKBULLET.h"
 #include "CEvenType1.h"
 #include "CINTERRUPT_BULLET.h"
-#include "CREDWORM.h"
+#include "REDWORM.h"
 #include "TANKBODY.h"
 #include "TANKTURRET.h"
 #include "EFFECT.h"
+#include "JASON.h"
+#include "CBOOM.h"
 
 #include "Utils.h"
 #include "Game.h"
 #include <iostream>
 #include <fstream>
-
+#include "Utils.h"
+#include "Textures.h"
+#include "Sprites.h"
+#include "Portal.h"
 
 #define QUADTREE_SECTION_SETTINGS	1
 #define QUADTREE_SECTION_OBJECTS	2
@@ -78,7 +83,8 @@ public:
 class CPlayScene : public CScene
 {
 protected:
-	CSOPHIA* player;					// A play scene has to have player, right? 
+	CSOPHIA* player;				// A play scene has to have player, right? 
+	JASON* player2;
 	vector<LPGAMEOBJECT> objects;
 	int mapHeight;
 	Map* map;
@@ -86,6 +92,7 @@ protected:
 	vector<CEvenType1*> InterruptBulletMng ;
 	vector<CEvenType1*> WormSpamMng;
 	vector<CEvenType1*> KaboomMng;
+	vector<CEvenType1*> BoomCarryMng;
 
 	void _ParseSection_TEXTURES(string line);
 	void _ParseSection_SPRITES(string line);
@@ -107,6 +114,7 @@ public:
 	bool IsInside(float Ox, float Oy, float xRange, float yRange, float tx, float ty);
 
 	CSOPHIA* GetPlayer() { return player; }
+	JASON* GetPlayer2() { return player2; }
 
 	void setMapheight(int height)
 	{
@@ -116,6 +124,37 @@ public:
 	int getMapheight()
 	{
 		return mapHeight;
+	}
+	/////////////////BoomCarryMng
+	void AddBoomCarryMng(float x, float y)
+	{
+		CEvenType1* obj = new CEvenType1(x, y);
+		this->BoomCarryMng.push_back(obj);
+	}
+	void CheckStackBoomCarryMng()
+	{
+		if (BoomCarryMng.at(0)->getCEventStack() < 4)
+		{
+			BoomCarryMng.at(0)->setCEventStack(BoomCarryMng.at(0)->getCEventStack() + 1);
+		}
+		else 
+		{
+			DeleteBoomCarryMng();
+		}
+	}
+	CEvenType1* GetBoomCarryMng()
+	{
+		return BoomCarryMng.at(0);
+	}
+	bool CheckBoomCarryMng()
+	{
+		if (BoomCarryMng.size() != 0)
+			return true;
+		return false;
+	}
+	void DeleteBoomCarryMng()
+	{
+		this->BoomCarryMng.erase(BoomCarryMng.begin());
 	}
 	/////////////////KaboomMng
 	void AddKaboomMng(float x, float y)

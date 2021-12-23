@@ -1,4 +1,4 @@
-#include "CLaserGuard.h"
+#include "LaserGuard.h"
 CLASERGUARD::CLASERGUARD()
 {
 	SetState(STATE_IDLE);

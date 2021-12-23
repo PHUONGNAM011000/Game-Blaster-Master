@@ -1,22 +1,22 @@
-#include "CGX680S.h"
-CGX680S::CGX680S()
+#include "GX680.h"
+CGX680::CGX680()
 {
 	SetState(STATE_IDLE);
 }
 
-void CGX680S::GetBoundingBox(float& left, float& top, float& right, float& bottom)
+void CGX680::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
 	left = x;
 	top = y;
-	right = x + CGX680S_BBOX_WIDTH;
+	right = x + CGX680_BBOX_WIDTH;
 
-	if (state == CGX680S_STATE_DIE)
-		bottom = y + CGX680S_BBOX_HEIGHT_DIE;
+	if (state == CGX680_STATE_DIE)
+		bottom = y + CGX680_BBOX_HEIGHT_DIE;
 	else
-		bottom = y + CGX680S_BBOX_HEIGHT;
+		bottom = y + CGX680_BBOX_HEIGHT;
 }
 
-void CGX680S::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
+void CGX680::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	CGameObject::Update(dt, coObjects);
 
@@ -28,11 +28,11 @@ void CGX680S::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	y += dy;
 }
 
-void CGX680S::Render()
+void CGX680::Render()
 {
 	if (state != STATE_DIE)
 	{
-		int ani = CGX680S_ANI;
+		int ani = CGX680_ANI;
 
 		animation_set->at(ani)->Render(x, y);
 
@@ -40,7 +40,7 @@ void CGX680S::Render()
 	}
 }
 
-void CGX680S::SetState(int state)
+void CGX680::SetState(int state)
 {
 	CGameObject::SetState(state);
 	switch (state)
@@ -52,6 +52,5 @@ void CGX680S::SetState(int state)
 	case STATE_DIE:
 		vy = DIE_PULL;
 		break;
-
 	}
 }
