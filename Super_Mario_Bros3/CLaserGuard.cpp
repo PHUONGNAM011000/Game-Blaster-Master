@@ -1,22 +1,22 @@
-#include "GX680.h"
-CGX680::CGX680()
+#include "CLaserGuard.h"
+CLASERGUARD::CLASERGUARD()
 {
 	SetState(STATE_IDLE);
 }
 
-void CGX680::GetBoundingBox(float& left, float& top, float& right, float& bottom)
+void CLASERGUARD::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
 	left = x;
 	top = y;
-	right = x + CGX680_BBOX_WIDTH;
+	right = x + CLASERGUARD_BBOX_WIDTH;
 
-	if (state == CGX680_STATE_DIE)
-		bottom = y + CGX680_BBOX_HEIGHT_DIE;
+	if (state == CLASERGUARD_STATE_DIE)
+		bottom = y + CLASERGUARD_BBOX_HEIGHT_DIE;
 	else
-		bottom = y + CGX680_BBOX_HEIGHT;
+		bottom = y + CLASERGUARD_BBOX_HEIGHT;
 }
 
-void CGX680::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
+void CLASERGUARD::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	CGameObject::Update(dt, coObjects);
 
@@ -28,11 +28,11 @@ void CGX680::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	y += dy;
 }
 
-void CGX680::Render()
+void CLASERGUARD::Render()
 {
 	if (state != STATE_DIE)
 	{
-		int ani = CGX680_ANI;
+		int ani = CLASERGUARD_ANI;
 
 		animation_set->at(ani)->Render(x, y);
 
@@ -40,7 +40,7 @@ void CGX680::Render()
 	}
 }
 
-void CGX680::SetState(int state)
+void CLASERGUARD::SetState(int state)
 {
 	CGameObject::SetState(state);
 	switch (state)

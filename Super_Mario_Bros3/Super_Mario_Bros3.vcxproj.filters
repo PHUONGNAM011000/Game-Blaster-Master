@@ -93,7 +93,28 @@
     <ClInclude Include="Interrupt.h">
       <Filter>Header Files\Enemy</Filter>
     </ClInclude>
+    <ClInclude Include="CBallbot.h">
+      <Filter>Header Files\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="CDrap.h">
+      <Filter>Header Files\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="CGX680.h">
+      <Filter>Header Files\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="CGX680S.h">
+      <Filter>Header Files\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="CLaserGuard.h">
+      <Filter>Header Files\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="CStuka.h">
+      <Filter>Header Files\Enemy</Filter>
+    </ClInclude>
     <ClInclude Include="Eyelet.h">
+      <Filter>Header Files\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="CBallCarry.h">
       <Filter>Header Files\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="MapObj.h">
@@ -105,6 +126,9 @@
     <ClInclude Include="CINTERRUPT_BULLET.h">
       <Filter>Header Files\OtherObj</Filter>
     </ClInclude>
+    <ClInclude Include="CREDWORM.h">
+      <Filter>Header Files\Enemy</Filter>
+    </ClInclude>
     <ClInclude Include="CTANKWHEELS.h">
       <Filter>Header Files\Player</Filter>
     </ClInclude>
@@ -113,6 +137,9 @@
     </ClInclude>
     <ClInclude Include="TANKBODY.h">
       <Filter>Header Files\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="DF.h">
+      <Filter>Header Files\OtherObj</Filter>
     </ClInclude>
     <ClInclude Include="TANKTURRET.h">
       <Filter>Header Files\Player</Filter>
@@ -124,37 +151,13 @@
       <Filter>Header Files\OtherObj</Filter>
     </ClInclude>
     <ClInclude Include="CBOOM.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\OtherObj</Filter>
     </ClInclude>
     <ClInclude Include="JASON.h">
       <Filter>Header Files\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Config.h">
+    <ClInclude Include="NoCollisionObject.h">
       <Filter>Header Files\OtherObj</Filter>
-    </ClInclude>
-    <ClInclude Include="BallBot.h">
-      <Filter>Header Files\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="BallCarry.h">
-      <Filter>Header Files\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Drap.h">
-      <Filter>Header Files\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="GX680.h">
-      <Filter>Header Files\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="GX680S.h">
-      <Filter>Header Files\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="LaserGuard.h">
-      <Filter>Header Files\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="REDWORM.h">
-      <Filter>Header Files\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Stuka.h">
-      <Filter>Header Files\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -206,10 +209,31 @@
     <ClCompile Include="Brick.cpp">
       <Filter>Source Files\OtherObj</Filter>
     </ClCompile>
+    <ClCompile Include="CBallbot.cpp">
+      <Filter>Source Files\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="CDrap.cpp">
+      <Filter>Source Files\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="CGX680.cpp">
+      <Filter>Source Files\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="CGX680S.cpp">
+      <Filter>Source Files\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="CLaserGuard.cpp">
+      <Filter>Source Files\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="CStuka.cpp">
+      <Filter>Source Files\Enemy</Filter>
+    </ClCompile>
     <ClCompile Include="Eyelet.cpp">
       <Filter>Source Files\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Interrupt.cpp">
+      <Filter>Source Files\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="CBallCarry.cpp">
       <Filter>Source Files\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="MapObj.cpp">
@@ -220,6 +244,9 @@
     </ClCompile>
     <ClCompile Include="CINTERRUPT_BULLET.cpp">
       <Filter>Source Files\OtherObj</Filter>
+    </ClCompile>
+    <ClCompile Include="CREDWORM.cpp">
+      <Filter>Source Files\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="CTANKWHEELS.cpp">
       <Filter>Source Files\Player</Filter>
@@ -237,34 +264,13 @@
       <Filter>Source Files\OtherObj</Filter>
     </ClCompile>
     <ClCompile Include="CBOOM.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\OtherObj</Filter>
     </ClCompile>
     <ClCompile Include="JASON.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
-    <ClCompile Include="BallBot.cpp">
-      <Filter>Source Files\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="BallCarry.cpp">
-      <Filter>Source Files\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Drap.cpp">
-      <Filter>Source Files\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="GX680.cpp">
-      <Filter>Source Files\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="GX680S.cpp">
-      <Filter>Source Files\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="LaserGuard.cpp">
-      <Filter>Source Files\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="REDWORM.cpp">
-      <Filter>Source Files\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Stuka.cpp">
-      <Filter>Source Files\Enemy</Filter>
+    <ClCompile Include="NoCollisionObject.cpp">
+      <Filter>Source Files\OtherObj</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

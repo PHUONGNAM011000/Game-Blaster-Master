@@ -10,24 +10,25 @@
 #include "Map.h"
 #include "CTANKWHEELS.h"
 #include "MapObj.h"
-#include "LaserGuard.h"
-#include "BallCarry.h"
-#include "BallBot.h"
-#include "DRAP.h"
-#include "GX680.h"
-#include "GX680S.h"
-#include "STUKA.h"
+#include "CLaserGuard.h"
+#include "CBallCarry.h"
+#include "CBallbot.h"
+#include "CDRAP.h"
+#include "CGX680.h"
+#include "CGX680S.h"
+#include "CSTUKA.h"
 #include "Eyelet.h"
 #include "Interrupt.h"
 #include "CTANKBULLET.h"
 #include "CEvenType1.h"
 #include "CINTERRUPT_BULLET.h"
-#include "REDWORM.h"
+#include "CREDWORM.h"
 #include "TANKBODY.h"
 #include "TANKTURRET.h"
 #include "EFFECT.h"
 #include "JASON.h"
 #include "CBOOM.h"
+#include "NoCollisionObject.h"
 
 #include "Utils.h"
 #include "Game.h"
@@ -133,7 +134,7 @@ public:
 	}
 	void CheckStackBoomCarryMng()
 	{
-		if (BoomCarryMng.at(0)->getCEventStack() < 4)
+		if (BoomCarryMng.at(0)->getCEventStack() < 3)
 		{
 			BoomCarryMng.at(0)->setCEventStack(BoomCarryMng.at(0)->getCEventStack() + 1);
 		}

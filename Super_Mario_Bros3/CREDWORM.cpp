@@ -1,4 +1,4 @@
-#include "REDWORM.h"
+#include "CREDWORM.h"
 #include <algorithm>
 #include "PlayScene.h"
 #include "Brick.h"
@@ -30,7 +30,7 @@ void CREDWORM::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 	// Simple fall down
 	if (state != CREDWORM_STATE_DIE)
-		vy += SOPHIA_GRAVITY * dt;
+		vy -= SOPHIA_GRAVITY * dt;
 
 	coEvents.clear();
 

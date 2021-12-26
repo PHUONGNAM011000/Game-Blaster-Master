@@ -1,22 +1,22 @@
-#include "GX680S.h"
-CGX680S::CGX680S()
+#include "CDRAP.h"
+CDRAP::CDRAP()
 {
 	SetState(STATE_IDLE);
 }
 
-void CGX680S::GetBoundingBox(float& left, float& top, float& right, float& bottom)
+void CDRAP::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
 	left = x;
 	top = y;
-	right = x + CGX680S_BBOX_WIDTH;
+	right = x + CDRAP_BBOX_WIDTH;
 
-	if (state == CGX680S_STATE_DIE)
-		bottom = y + CGX680S_BBOX_HEIGHT_DIE;
+	if (state == CDRAP_STATE_DIE)
+		bottom = y + CDRAP_BBOX_HEIGHT_DIE;
 	else
-		bottom = y + CGX680S_BBOX_HEIGHT;
+		bottom = y + CDRAP_BBOX_HEIGHT;
 }
 
-void CGX680S::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
+void CDRAP::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	CGameObject::Update(dt, coObjects);
 
@@ -28,19 +28,20 @@ void CGX680S::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	y += dy;
 }
 
-void CGX680S::Render()
+void CDRAP::Render()
 {
 	if (state != STATE_DIE)
 	{
-		int ani = CGX680S_ANI;
+		int ani = CDRAP_ANI;
 
 		animation_set->at(ani)->Render(x, y);
 
 		//RenderBoundingBox();
 	}
+
 }
 
-void CGX680S::SetState(int state)
+void CDRAP::SetState(int state)
 {
 	CGameObject::SetState(state);
 	switch (state)
@@ -50,8 +51,7 @@ void CGX680S::SetState(int state)
 		vy = 0;
 		break;
 	case STATE_DIE:
-		vy = DIE_PULL;
+		vy = -DIE_PULL;
 		break;
-
 	}
 }

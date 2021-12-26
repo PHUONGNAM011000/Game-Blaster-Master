@@ -1,6 +1,6 @@
 #pragma once
 #include "GameObject.h"
-#include "Config.h"
+#include "DF.h"
 
 class CSOPHIA : public CGameObject
 {

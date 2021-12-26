@@ -38,6 +38,7 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath) :
 #define OBJECT_TYPE_EFFECT	14
 #define OBJECT_TYPE_CBOOM	15
 #define OBJECT_TYPE_JASON	16
+#define OBJECT_TYPE_NoCollisionObject	17
 
 #define OBJECT_TYPE_PORTAL	50
 
@@ -261,34 +262,37 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		DebugOut(L"[INFO] Player object created!\n");
 
 		break;
-		
 	case OBJECT_TYPE_BRICK: obj = new CBrick(); break;
 	case OBJECT_TYPE_CBOOM: obj = new CBOOM(); break;
 	case OBJECT_TYPE_CTANKBULLET: obj = new CTANKBULLET(); break;
+	case OBJECT_TYPE_NoCollisionObject: obj = new CNoCollisionObject(); break;
 		
 	case OBJECT_TYPE_TANK_WHEEL:
 	{
 		float part = atof(tokens[4].c_str());
 		obj = new TANKWHEEL(part);
-		
 	}
 	break;
+
 	case OBJECT_TYPE_TANK_BODY:
 	{
 		obj = new TANKBODY();
 	}
 	break;
+
 	case OBJECT_TYPE_TANK_TURRET:
 	{
 		obj = new TANKTURRET();
 	}
 	break;
+
 	case OBJECT_TYPE_EFFECT:
 	{
 		float time = atof(tokens[4].c_str());
 		obj = new EFFECT(time);
 	}
 	break;
+
 	case OBJECT_TYPE_PORTAL:
 	{
 		float r = atof(tokens[4].c_str());
@@ -509,10 +513,10 @@ void CPlayScenceKeyHandler::OnKeyUp(int KeyCode)
 		case DIK_A:
 			player->SetisFiring(false);
 			break;
-		case DIK_C:
+		case DIK_R:
 			CGame::GetInstance()->SwitchScene(2);
 			break;
-		case DIK_R:
+		case DIK_H:
 			CGame::GetInstance()->SwitchScene(1);
 			break;
 		}
@@ -525,7 +529,7 @@ void CPlayScenceKeyHandler::OnKeyUp(int KeyCode)
 		case DIK_A:
 			player->SetisFiring(false);
 			break;
-		case DIK_C:
+		case DIK_R:
 			CGame::GetInstance()->SwitchScene(2);
 			break;
 		case DIK_H:

@@ -55,6 +55,10 @@
 #define JASON_ANI_WALK_LEFT			1
 #define JASON_ANI_WALK_DOWN		2
 #define JASON_ANI_WALK_RIGHT		3
+#define JASON_ANI_IDLE_UP		4
+#define JASON_ANI_IDLE_LEFT			5
+#define JASON_ANI_IDLE_DOWN		6
+#define JASON_ANI_IDLE_RIGHT		7
 
 
 #define JASON_ANI_BIG_WALKING_RIGHT			4
@@ -78,7 +82,7 @@
 #define JASON_FIRING_DELAY_TIME 500
 
 ///////////////////////////
-#define SOPHIA_WALKING_SPEED		0.15f
+#define SOPHIA_WALKING_SPEED		0.15
 //0.1f
 #define SOPHIA_JUMP_SPEED_Y		0.5f
 #define SOPHIA_JUMP_DEFLECT_SPEED 0.2f
