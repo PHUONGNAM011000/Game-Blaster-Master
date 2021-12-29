@@ -1,6 +1,6 @@
 #pragma once
 #include "GameObject.h"
-#include "DF.h"
+#include "Config.h"
 
 class TANKWHEEL : public CGameObject
 {

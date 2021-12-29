@@ -1,7 +1,7 @@
 #include "CREDWORM.h"
 #include <algorithm>
 #include "PlayScene.h"
-#include "Brick.h"
+#include "Brick_Game.h"
 
 CREDWORM::CREDWORM()
 {

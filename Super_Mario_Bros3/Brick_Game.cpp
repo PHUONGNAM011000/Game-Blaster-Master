@@ -1,4 +1,4 @@
-#include "Brick.h"
+#include "Brick_Game.h"
 
 void CBrick::Render()
 {

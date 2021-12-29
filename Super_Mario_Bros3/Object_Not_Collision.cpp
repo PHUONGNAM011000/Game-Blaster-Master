@@ -1,4 +1,4 @@
-#include "NoCollisionObject.h"
+#include "Object_Not_Collision.h"
 #include"Game.h"
 #include"Scene.h"
 

@@ -1,26 +1,26 @@
-#include "CLASER_BULLET.h"
+#include "INTERRUPT_BULLET.h"
 #include <algorithm>
 #include "PlayScene.h"
-#include "Brick.h"
+#include "Brick_Game.h"
 
-CLASER_BULLET::CLASER_BULLET()
+CINTERRUPT_BULLET::CINTERRUPT_BULLET()
 {
-	SetState(CLASER_BULLET_STATE_IDLE);
+	SetState(CINTERRUPT_BULLET_STATE_IDLE);
 	nx = 0;
 }
 
-void CLASER_BULLET::GetBoundingBox(float& left, float& top, float& right, float& bottom)
+void CINTERRUPT_BULLET::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
 	left = x;
 	top = y;
-	right = x + CLASER_BULLET_BBOX_WIDTH;
+	right = x + CINTERRUPT_BULLET_BBOX_WIDTH;
 
-	if (state == CLASER_BULLET_STATE_DIE)
-		y = y + CLASER_BULLET_BBOX_HEIGHT;
-	else bottom = y + CLASER_BULLET_BBOX_HEIGHT;
+	if (state == CINTERRUPT_BULLET_STATE_DIE)
+		y = y + CINTERRUPT_BULLET_BBOX_HEIGHT;
+	else bottom = y + CINTERRUPT_BULLET_BBOX_HEIGHT;
 }
 
-void CLASER_BULLET::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
+void CINTERRUPT_BULLET::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
 	CPlayScene* playscene = ((CPlayScene*)CGame::GetInstance()->GetCurrentScene());
 	CGameObject::Update(dt, coObjects);
@@ -31,14 +31,14 @@ void CLASER_BULLET::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	coEvents.clear();
 
 	// turn off collision when die 
-	if (state != CLASER_BULLET_STATE_DIE)
+	if (state != CINTERRUPT_BULLET_STATE_DIE)
 		CalcPotentialCollisions(coObjects, coEvents);
 	else
 	{
 		isUsed = false;
 		x = STORING_LOCATION;
 		y = STORING_LOCATION;
-		SetState(CLASER_BULLET_STATE_DIE);
+		SetState(CINTERRUPT_BULLET_STATE_DIE);
 	}
 	if (isUsed == false)
 	{
@@ -47,7 +47,7 @@ void CLASER_BULLET::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 			this->SetPosition(playscene->GetInterruptBulletMng()->getCEventPoisitionX(), playscene->GetInterruptBulletMng()->getCEventPoisitionY());
 			playscene->DeleteInterruptBulletMng();
 			isUsed = true;
-			SetState(CLASER_BULLET_STATE_IDLE);
+			SetState(CINTERRUPT_BULLET_STATE_IDLE);
 		}
 	}
 	// No collision occured, proceed normally
@@ -70,15 +70,19 @@ void CLASER_BULLET::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 			LPCOLLISIONEVENT e = coEventsResult[i];
 			if (dynamic_cast<CBrick*>(e->obj)) 
 			{
-				SetState(CLASER_BULLET_STATE_DIE);
+				SetState(CINTERRUPT_BULLET_STATE_DIE);
+				playscene->AddWormSpamMng(this->x, this->y);
 			}
 		}
 		// clean up collision events
 		for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+		if (x <= 0)
+			if (vx < 0)
+				vx = -vx;
 	}
 }
 
-void CLASER_BULLET::CalcPotentialCollisions(
+void CINTERRUPT_BULLET::CalcPotentialCollisions(
 	vector<LPGAMEOBJECT>* coObjects,
 	vector<LPCOLLISIONEVENT>& coEvents)
 {
@@ -97,16 +101,16 @@ void CLASER_BULLET::CalcPotentialCollisions(
 	std::sort(coEvents.begin(), coEvents.end(), CCollisionEvent::compare);
 }
 
-void CLASER_BULLET::Render()
+void CINTERRUPT_BULLET::Render()
 {
 	int ani = 0;
 
 	switch (state)
 	{
-	case CLASER_BULLET_STATE_IDLE:
-		ani = CLASER_BULLET_ANI_IDLE;
-		break;
-	case CLASER_BULLET_STATE_DIE:
+	case CINTERRUPT_BULLET_STATE_IDLE:
+		 ani = CINTERRUPT_BULLET_ANI_IDLE;
+		 break;
+	case CINTERRUPT_BULLET_STATE_DIE:
 		return;
 	}
 
@@ -115,13 +119,13 @@ void CLASER_BULLET::Render()
 	//RenderBoundingBox();
 }
 
-void CLASER_BULLET::SetState(int state)
+void CINTERRUPT_BULLET::SetState(int state)
 {
 	CGameObject::SetState(state);
 	switch (state)
 	{
-	case CLASER_BULLET_STATE_IDLE:
-		vy = -CLASER_BULLET_SPEED;
+	case CINTERRUPT_BULLET_STATE_IDLE:
+		vy = -CINTERRUPT_BULLET_SPEED;
 		break;
 
 	}
