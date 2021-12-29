@@ -44,6 +44,7 @@
 #include "CGX_BULLET.h"
 #include "CLASER_BULLET.h"
 #include "MapCamera.h"
+#include "CSTATBAR.h"
 
 #define QUADTREE_SECTION_SETTINGS	1
 #define QUADTREE_SECTION_OBJECTS	2
@@ -105,6 +106,9 @@ protected:
 	vector<CEvenType1*> CGXMng;
 	vector<MapCamera*> MapCam;
 	
+	int filming_duration = 1000;
+	DWORD filming_start = 0;
+
 	int camState = 0;
 
 	void _ParseSection_TEXTURES(string line);
@@ -130,6 +134,11 @@ public:
 	CSOPHIA* GetPlayer() { return player; }
 	JASON* GetPlayer2() { return player2; }
 
+	void StartFilming()
+	{
+		if (filming_start == 0)
+			filming_start = (DWORD)GetTickCount64();
+	}
 	void setCamState(int value)
 	{
 		camState = value;
@@ -139,7 +148,6 @@ public:
 	{
 		return camState;
 	}
-
 	void setMapheight(int height)
 	{
 		mapHeight = height;
