@@ -1,7 +1,7 @@
-#include "CWAVE_BULLET.h"
+#include "WAVE_BULLET.h"
 #include <algorithm>
 #include "PlayScene.h"
-#include "JASON.h"
+#include "BIG_JASON.h"
 #include "Brick.h"
 
 CWAVE_BULLET::CWAVE_BULLET()

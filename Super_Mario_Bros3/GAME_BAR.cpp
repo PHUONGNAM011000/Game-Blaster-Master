@@ -1,4 +1,4 @@
-#include "CSTATBAR.h"
+#include "GAME_BAR.h"
 #include"Game.h"
 #include"Scene.h"
 
