@@ -1,7 +1,7 @@
 #include "TANK_DOOR.h"
 #include <algorithm>
 #include "PlayScene.h"
-#include "Config.h"
+#include "CONFIG.h"
 
 
 CTANKDOOR::CTANKDOOR()

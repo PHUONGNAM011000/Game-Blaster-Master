@@ -34,10 +34,10 @@
     <Filter Include="Header Files\Event_Buffer_Handler">
       <UniqueIdentifier>{4de27295-4212-45ac-a135-83fdc33da32f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Game_Obj_Monster">
+    <Filter Include="Header Files\Game_Object_Monster">
       <UniqueIdentifier>{b5fc293a-c591-46fb-b5b8-98c781fa5ae5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Game_Obj_Monster">
+    <Filter Include="Source Files\Game_Object_Monster">
       <UniqueIdentifier>{77e3cbde-df3d-4e92-9efc-6997792fdcf4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -82,10 +82,10 @@
       <Filter>Header Files\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="Brick.h">
-      <Filter>Header Files\Game_Obj_Monster</Filter>
+      <Filter>Header Files\Game_Object_Monster</Filter>
     </ClInclude>
     <ClInclude Include="Portal.h">
-      <Filter>Header Files\Game_Obj_Monster</Filter>
+      <Filter>Header Files\Game_Object_Monster</Filter>
     </ClInclude>
     <ClInclude Include="Sprites.h">
       <Filter>Header Files\System</Filter>
@@ -126,11 +126,17 @@
     <ClInclude Include="SOPHIA.h">
       <Filter>Header Files\Player</Filter>
     </ClInclude>
-    <ClInclude Include="EFFECT.h">
-      <Filter>Header Files\Game_Obj_Monster</Filter>
+    <ClInclude Include="TANKBODY.h">
+      <Filter>Header Files\Player</Filter>
     </ClInclude>
-    <ClInclude Include="NoCollisionObject.h">
-      <Filter>Header Files\Game_Obj_Monster</Filter>
+    <ClInclude Include="TANKTURRET.h">
+      <Filter>Header Files\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="CEvenType1.h">
+      <Filter>Header Files\Event_Buffer_Handler</Filter>
+    </ClInclude>
+    <ClInclude Include="EFFECT.h">
+      <Filter>Header Files\Game_Object_Monster</Filter>
     </ClInclude>
     <ClInclude Include="sound.h">
       <Filter>Header Files\System</Filter>
@@ -141,44 +147,38 @@
     <ClInclude Include="MINI_JASON.h">
       <Filter>Header Files\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Config.h">
-      <Filter>Header Files\Game_Obj_Monster</Filter>
-    </ClInclude>
-    <ClInclude Include="Even_Object_Type.h">
-      <Filter>Header Files\Event_Buffer_Handler</Filter>
+    <ClInclude Include="Items.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BOOM.h">
-      <Filter>Header Files\Game_Obj_Monster</Filter>
+      <Filter>Header Files\Game_Object_Monster</Filter>
     </ClInclude>
     <ClInclude Include="GRENADE.h">
-      <Filter>Header Files\Game_Obj_Monster</Filter>
+      <Filter>Header Files\Game_Object_Monster</Filter>
     </ClInclude>
     <ClInclude Include="GX_BULLET.h">
-      <Filter>Header Files\Game_Obj_Monster</Filter>
+      <Filter>Header Files\Game_Object_Monster</Filter>
     </ClInclude>
     <ClInclude Include="INTERRUPT_BULLET.h">
-      <Filter>Header Files\Game_Obj_Monster</Filter>
+      <Filter>Header Files\Game_Object_Monster</Filter>
     </ClInclude>
     <ClInclude Include="LASER_BULLET.h">
-      <Filter>Header Files\Game_Obj_Monster</Filter>
+      <Filter>Header Files\Game_Object_Monster</Filter>
     </ClInclude>
     <ClInclude Include="GAME_BAR.h">
-      <Filter>Header Files\Game_Obj_Monster</Filter>
+      <Filter>Header Files\Game_Object_Monster</Filter>
     </ClInclude>
-    <ClInclude Include="TANKBULLET.h">
-      <Filter>Header Files\Game_Obj_Monster</Filter>
+    <ClInclude Include="TANK_BULLET.h">
+      <Filter>Header Files\Game_Object_Monster</Filter>
     </ClInclude>
     <ClInclude Include="WAVE_BULLET.h">
-      <Filter>Header Files\Game_Obj_Monster</Filter>
+      <Filter>Header Files\Game_Object_Monster</Filter>
     </ClInclude>
-    <ClInclude Include="GAME_BREAKABLE_BRICK.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="CONFIG.h">
+      <Filter>Header Files\Game_Object_Monster</Filter>
     </ClInclude>
-    <ClInclude Include="Play_Items.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BIG_JASON.h">
-      <Filter>Header Files\Player</Filter>
+    <ClInclude Include="Not_Object_Collision.h">
+      <Filter>Header Files\Game_Object_Monster</Filter>
     </ClInclude>
     <ClInclude Include="TANK_DOOR.h">
       <Filter>Header Files\Player</Filter>
@@ -186,11 +186,11 @@
     <ClInclude Include="TANK_WHEELS.h">
       <Filter>Header Files\Player</Filter>
     </ClInclude>
-    <ClInclude Include="TANK_BODY.h">
+    <ClInclude Include="BIG_JASON.h">
       <Filter>Header Files\Player</Filter>
     </ClInclude>
-    <ClInclude Include="TANK_TURRET.h">
-      <Filter>Header Files\Player</Filter>
+    <ClInclude Include="BREAKABLE_GAME_BRICK.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -240,7 +240,7 @@
       <Filter>Source Files\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Brick.cpp">
-      <Filter>Source Files\Game_Obj_Monster</Filter>
+      <Filter>Source Files\Game_Object_Monster</Filter>
     </ClCompile>
     <ClCompile Include="CBallbot.cpp">
       <Filter>Source Files\Enemy</Filter>
@@ -275,14 +275,26 @@
     <ClCompile Include="CREDWORM.cpp">
       <Filter>Source Files\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="CTANKWHEELS.cpp">
+      <Filter>Source Files\Player</Filter>
+    </ClCompile>
     <ClCompile Include="SOPHIA.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
-    <ClCompile Include="EFFECT.cpp">
-      <Filter>Source Files\Game_Obj_Monster</Filter>
+    <ClCompile Include="TANKBODY.cpp">
+      <Filter>Source Files\Player</Filter>
     </ClCompile>
-    <ClCompile Include="NoCollisionObject.cpp">
-      <Filter>Source Files\Game_Obj_Monster</Filter>
+    <ClCompile Include="TANKTURRET.cpp">
+      <Filter>Source Files\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="EFFECT.cpp">
+      <Filter>Source Files\Game_Object_Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="JASON.cpp">
+      <Filter>Source Files\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="CTANKDOOR.cpp">
+      <Filter>Source Files\Player</Filter>
     </ClCompile>
     <ClCompile Include="MINI_JASON.cpp">
       <Filter>Source Files\Player</Filter>
@@ -293,50 +305,38 @@
     <ClCompile Include="MapCamera.cpp">
       <Filter>Source Files\System</Filter>
     </ClCompile>
+    <ClCompile Include="Items.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="BOOM.cpp">
-      <Filter>Source Files\Game_Obj_Monster</Filter>
+      <Filter>Source Files\Game_Object_Monster</Filter>
     </ClCompile>
     <ClCompile Include="GRENADE.cpp">
-      <Filter>Source Files\Game_Obj_Monster</Filter>
+      <Filter>Source Files\Game_Object_Monster</Filter>
     </ClCompile>
     <ClCompile Include="GX_BULLET.cpp">
-      <Filter>Source Files\Game_Obj_Monster</Filter>
+      <Filter>Source Files\Game_Object_Monster</Filter>
     </ClCompile>
     <ClCompile Include="INTERRUPT_BULLET.cpp">
-      <Filter>Source Files\Game_Obj_Monster</Filter>
+      <Filter>Source Files\Game_Object_Monster</Filter>
     </ClCompile>
     <ClCompile Include="LASER_BULLET.cpp">
-      <Filter>Source Files\Game_Obj_Monster</Filter>
-    </ClCompile>
-    <ClCompile Include="TANKBULLET.cpp">
-      <Filter>Source Files\Game_Obj_Monster</Filter>
-    </ClCompile>
-    <ClCompile Include="WAVE_BULLET.cpp">
-      <Filter>Source Files\Game_Obj_Monster</Filter>
+      <Filter>Source Files\Game_Object_Monster</Filter>
     </ClCompile>
     <ClCompile Include="GAME_BAR.cpp">
-      <Filter>Source Files\Game_Obj_Monster</Filter>
+      <Filter>Source Files\Game_Object_Monster</Filter>
     </ClCompile>
-    <ClCompile Include="GAME_BREAKABLE_BRICK.cpp">
+    <ClCompile Include="TANK_BULLET.cpp">
+      <Filter>Source Files\Game_Object_Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="WAVE_BULLET.cpp">
+      <Filter>Source Files\Game_Object_Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Not_Object_Collision.cpp">
+      <Filter>Source Files\Game_Object_Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="BREAKABLE_GAME_BRICK.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Play_Items.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BIG_JASON.cpp">
-      <Filter>Source Files\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="TANK_DOOR.cpp">
-      <Filter>Source Files\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="TANK_WHEELS.cpp">
-      <Filter>Source Files\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="TANK_BODY.cpp">
-      <Filter>Source Files\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="TANK_TURRET.cpp">
-      <Filter>Source Files\Player</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

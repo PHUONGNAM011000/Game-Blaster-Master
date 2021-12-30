@@ -1,6 +1,6 @@
 #pragma once
 #include "GameObject.h"
-#include "Config.h"
+#include "CONFIG.h"
 
 class MINI_JASON : public CGameObject
 {

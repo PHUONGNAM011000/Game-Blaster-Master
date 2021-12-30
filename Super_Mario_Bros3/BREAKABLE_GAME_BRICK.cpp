@@ -1,4 +1,4 @@
-#include "GAME_BREAKABLE_BRICK.h"
+#include "BREAKABLE_GAME_BRICK.h"
 
 void CBREAKABLE_BRICK::Render()
 {
