@@ -1,4 +1,4 @@
-#include "Sound_Game.h"
+#include "Sound.h"
 #include "Game.h"
 
 Sound* Sound::instance = nullptr;

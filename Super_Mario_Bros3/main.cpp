@@ -21,7 +21,7 @@
 #include "Textures.h"
 
 #include "SOPHIA.h"
-#include "Brick_Game.h"
+#include "Brick.h"
 #include "Eye.h"
 
 #include "PlayScene.h"

@@ -3,7 +3,7 @@
 #include <d3dx9.h>
 #include <d3d9.h>
 #include <vector>
-#include "Brick_Game.h"
+#include "Brick.h"
 
 #define TILE_WIDTH 32
 #define TILE_HEIGHT 32

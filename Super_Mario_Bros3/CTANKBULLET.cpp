@@ -1,8 +1,8 @@
-#include "TANKBULLET.h"
+#include "CTANKBULLET.h"
 #include <algorithm>
 #include "PlayScene.h"
 #include "SOPHIA.h"
-#include "Brick_Game.h"
+#include "Brick.h"
 
 CTANKBULLET::CTANKBULLET()
 {
@@ -93,7 +93,7 @@ void CTANKBULLET::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 			LPCOLLISIONEVENT e = coEventsResult[i];
 			if (!dynamic_cast<CBrick*>(e->obj)) 
 			{
-				(e->obj)->SetState(STATE_DIE);
+				(e->obj)->setheath((e->obj)->Getheath() - 1000);
 				((CPlayScene*)CGame::GetInstance()->GetCurrentScene())->AddKaboomMng(e->obj->x, e->obj->y);
 				SetState(CTANKBULLET_STATE_DIE);
 			}

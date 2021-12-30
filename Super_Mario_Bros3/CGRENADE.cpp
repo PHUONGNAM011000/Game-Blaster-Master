@@ -1,8 +1,8 @@
-#include "GRENADE.h"
+#include "CGRENADE.h"
 #include <algorithm>
 #include "PlayScene.h"
 #include "JASON.h"
-#include "Brick_Game.h"
+#include "Brick.h"
 
 CGRENADE::CGRENADE()
 {

@@ -1,8 +1,8 @@
-#include "WAVE_BULLET.h"
+#include "CWAVE_BULLET.h"
 #include <algorithm>
 #include "PlayScene.h"
 #include "JASON.h"
-#include "Brick_Game.h"
+#include "Brick.h"
 
 CWAVE_BULLET::CWAVE_BULLET()
 {
@@ -140,8 +140,7 @@ void CWAVE_BULLET::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 			LPCOLLISIONEVENT e = coEventsResult[i];
 			if (!dynamic_cast<CBrick*>(e->obj)) 
 			{
-				(e->obj)->SetState(STATE_DIE);
-				(e->obj)->SetisAlive(false);
+				(e->obj)->setheath((e->obj)->Getheath() - 100);
 				SetState(CWAVE_BULLET_STATE_DIE);
 				((CPlayScene*)CGame::GetInstance()->GetCurrentScene())->AddKaboomMng((e->obj)->GetPositionX(), (e->obj)->GetPositionY());
 			}

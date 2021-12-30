@@ -1,7 +1,7 @@
 #include "EFFECT.h"
 #include <algorithm>
 #include "PlayScene.h"
-#include "Brick_Game.h"
+#include "Brick.h"
 
 EFFECT::EFFECT(float time)
 {

@@ -1,7 +1,7 @@
 #pragma once
 #pragma once
 #include "GameObject.h"
-#include "Brick_Game.h"
+#include "Brick.h"
 #include "algorithm"
 
 #define EYE_WALKING_SPEED 0.05f;
