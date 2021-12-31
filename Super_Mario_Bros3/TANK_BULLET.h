@@ -1,6 +1,6 @@
 #pragma once
 #include "GameObject.h"
-#define CTANKBULLET_SPEED 0.15f
+#define CTANKBULLET_SPEED 0.5f
 #define CTANKBULLET_STATE_DIE_SPEED 0
 
 #define CTANKBULLET_BBOX_WIDTH	7
